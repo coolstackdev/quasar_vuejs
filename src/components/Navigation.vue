@@ -1,6 +1,6 @@
 <template>
-  <div class="q-pa-md">
-    <div class="row">
+  <div>
+    <div class="row container-left-right">
       <div class="col">
         <a href="#" class="hollow button width-112">
           <i class="fa fa-chevron-left margin-right-10" aria-hidden="true"></i> Previous
@@ -21,7 +21,11 @@
   </div>
 </template>
 
-<style></style>
+<style scoped>
+.container-left-right {
+  margin: 0 15px;
+}
+</style>
 
 <script>
 export default {

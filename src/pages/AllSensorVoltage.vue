@@ -38,26 +38,11 @@
   </q-page>
 </template>
 
-<style lang="css" scoped>
-.screen {
-  outline: solid;
-  outline-width: 20px;
-  width: 600px !important;
-  margin: 0 auto;
-}
-
+<style scoped>
 .alarm {
   font-size: 13px;
   line-height: 0;
   position: absolute;
-}
-
-.content {
-  width: 100%;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .full {
@@ -73,7 +58,7 @@
 import Navigation from "../components/Navigation.vue";
 
 export default {
-  name: "PageIndex",
+  name: "PageAllSensor",
   components: {
     Navigation
   },

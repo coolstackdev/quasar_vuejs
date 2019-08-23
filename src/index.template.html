@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-
     <title>MH21</title>
     <link rel="stylesheet" href="statics/foundation/css/foundation.css" />
     <link rel="stylesheet" href="statics/foundation/css/app.css" />
@@ -10,15 +9,19 @@
 
     <link rel="icon" type="image/x-icon" href="statics/images/favicon.ico" />
 
-    <meta charset="utf-8">
-    <meta name="description" content="<%= htmlWebpackPlugin.options.productDescription %>">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="msapplication-tap-highlight" content="no">
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width<% if (htmlWebpackPlugin.options.ctx.mode.cordova) { %>, viewport-fit=cover<% } %>">
-
-    
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="<%= htmlWebpackPlugin.options.productDescription %>"
+    />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta
+      name="viewport"
+      content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width<% if (htmlWebpackPlugin.options.ctx.mode.cordova) { %>, viewport-fit=cover<% } %>"
+    />
   </head>
-  <body>
+  <body class="overflow: hidden">
     <!-- DO NOT touch the following DIV -->
     <div id="q-app"></div>
 

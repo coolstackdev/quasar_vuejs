@@ -4,7 +4,9 @@ const routes = [
     component: () => import("layouts/MyLayout.vue"),
     children: [
       { path: "", component: () => import("pages/Index.vue") },
-      { path: "all", component: () => import("pages/AllSensorVoltage.vue") }
+      { path: "all", component: () => import("pages/AllSensorVoltage.vue") },
+      { path: "home3", component: () => import("pages/Home3.vue") },
+      { path: "touch", component: () => import("pages/TouchInput.vue") }
     ]
   }
 ];

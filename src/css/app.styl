@@ -1,1 +1,41 @@
 // app global css
+.screen {
+  outline: solid;
+  outline-width: 20px;
+  width: 600px !important;
+  height: 400px !important;
+  margin: 200px auto 0 auto;
+}
+
+.content {
+  width: 100%;
+  height: 350px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+$color = rgb(150, 150, 150) 
+
+textarea::-webkit-input-placeholder {
+  color: $color;
+}
+
+textarea:-moz-placeholder {
+  /* Firefox 18- */
+  color: $color;
+}
+
+textarea::-moz-placeholder {
+  /* Firefox 19+ */
+  color: $color;
+}
+
+textarea:-ms-input-placeholder {
+  color: $color;
+}
+
+textarea::placeholder {
+  color: $color;
+}
