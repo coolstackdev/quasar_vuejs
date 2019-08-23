@@ -9,5 +9,10 @@ export default {
   button_next: "Next",
   string_mark: "MARK",
   string_chain: "Chain: Run",
-  string_lsen: "LSen: Off"
+  string_lsen: "LSen: Off",
+  button_alarm: "Alarm",
+  string_material: "Material 12 Empty",
+  string_sensors: "Sensors",
+  string_volts: "Volts",
+  button_zero: "Zero"
 };

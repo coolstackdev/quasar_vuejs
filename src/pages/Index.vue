@@ -4,17 +4,18 @@
       <div class="content">
         <div class="q-pa-md">
           <div class="row">
-            <p>
+            <div class="col-4">
               <a href="#" class="hollow alert button">
-                <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Alarm
+                <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                {{$t('button_alarm')}}
               </a>
-            </p>
-            <p>
+            </div>
+            <div class="col-8">
               <a href="#" class="font-size-17-i line-height-1-i clear button">
-                Material 12 Empty
+                {{$t('string_material')}}
                 <i class="fa fa-pencil margin-left-10" aria-hidden="true"></i>
               </a>
-            </p>
+            </div>
           </div>
 
           <div class="row">

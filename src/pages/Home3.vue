@@ -5,7 +5,7 @@
         <div class="q-pa-md full">
           <div class="row">
             <div class="col">
-              <a href="#" class="hollow button width-112">Alarm</a>
+              <a href="#" class="hollow button width-112">{{$t('button_alarm')}}</a>
             </div>
             <div class="col">
               <p class="sub_item">First:</p>
@@ -18,7 +18,11 @@
               <p class="sub_item">STD:</p>
             </div>
             <div class="col">
-              <a href="#" class="hollow button width-112" style="float: right">Clear</a>
+              <a
+                href="#"
+                class="hollow button width-112"
+                style="float: right"
+              >{{$t('button_clear')}}</a>
             </div>
           </div>
 

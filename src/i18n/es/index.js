@@ -9,5 +9,11 @@ export default {
   button_next: "próximo",
   string_mark: "MARCA",
   string_chain: "Cadena: Ejecutar",
-  string_lsen: "LSen: apagado"
+  string_lsen: "LSen: apagado",
+  button_alarm: "Alarma",
+  string_material: "Material 12 Vacío",
+  string_sensors: "Sensores",
+  string_volts: "Voltios",
+  button_zero: "Cero",
+  button_clear: "Claro"
 };

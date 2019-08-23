@@ -4,13 +4,13 @@
       <div class="content">
         <div class="q-pa-md full">
           <div class="row">
-            <div class="col">Sensors</div>
-            <div class="col">Volts</div>
+            <div class="col">{{$t('string_sensors')}}</div>
+            <div class="col">{{$t('string_volts')}}</div>
           </div>
 
           <div class="row">
             <div class="col">
-              <a href="#" class="hollow button width-112" style="float: right">Zero</a>
+              <a href="#" class="hollow button width-112" style="float: right">{{$t('button_zero')}}</a>
             </div>
             <div class="col"></div>
           </div>
@@ -19,14 +19,14 @@
             <div class="col">
               <div v-for="sensor in leftRow" v-bind:key="sensor.id">
                 {{sensor.id}}: {{toFloat2(sensor.voltage)}}
-                <p v-if="sensor.isAlarm" class="alarm">Alarm</p>
+                <p v-if="sensor.isAlarm" class="alarm">{{$t('button_alarm')}}</p>
               </div>
             </div>
 
             <div class="col">
               <div v-for="sensor in rightRow" v-bind:key="sensor.id">
                 {{sensor.id}}: {{toFloat2(sensor.voltage)}}
-                <p v-if="sensor.isAlarm" class="alarm">Alarm</p>
+                <p v-if="sensor.isAlarm" class="alarm">{{$t('button_alarm')}}</p>
               </div>
             </div>
           </div>
