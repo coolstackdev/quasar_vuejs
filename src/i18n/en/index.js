@@ -6,5 +6,8 @@ export default {
   success: "Action was successful",
   button_menu: "Menu",
   button_previous: "Previous",
-  button_next: "Next"
+  button_next: "Next",
+  string_mark: "MARK",
+  string_chain: "Chain: Run",
+  string_lsen: "LSen: Off"
 };
