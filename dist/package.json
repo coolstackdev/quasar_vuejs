@@ -1,0 +1,10 @@
+{
+  "name": "omega",
+  "version": "1.0.0",
+  "description": "Quasar Power",
+  "author": "Roberto",
+  "private": true,
+  "scripts": {
+    "postinstall": "npm install express"
+  }
+}
