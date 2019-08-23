@@ -15,5 +15,10 @@ export default {
   string_sensors: "Sensores",
   string_volts: "Voltios",
   button_zero: "Cero",
-  button_clear: "Claro"
+  button_clear: "Claro",
+  string_first: "Primer",
+  string_last: "Último",
+  string_mean: "Media",
+  string_STD: "STD",
+  string_tap_to: "Toca el teclado virtual para comenzar"
 };

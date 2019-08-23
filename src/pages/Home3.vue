@@ -8,14 +8,14 @@
               <a href="#" class="hollow button width-112">{{$t('button_alarm')}}</a>
             </div>
             <div class="col">
-              <p class="sub_item">First:</p>
-              <p class="sub_item">Last:</p>
-              <p class="sub_item">Mean:</p>
+              <p class="sub_item">{{$t('string_first')}}:</p>
+              <p class="sub_item">{{$t('string_last')}}:</p>
+              <p class="sub_item">{{$t('string_mean')}}:</p>
             </div>
             <div class="col">
               <p class="sub_item"></p>
               <p class="sub_item"></p>
-              <p class="sub_item">STD:</p>
+              <p class="sub_item">{{$t('string_STD')}}:</p>
             </div>
             <div class="col">
               <a

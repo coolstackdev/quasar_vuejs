@@ -18,14 +18,22 @@
           <div class="row">
             <div class="col">
               <div v-for="sensor in leftRow" v-bind:key="sensor.id">
-                {{sensor.id}}: {{toFloat2(sensor.voltage)}}
+                <div class="row">
+                  <div class="col-3">{{sensor.id}}:</div>
+                  <div class="col-6" style="text-align: right;">{{toFloat2(sensor.voltage)}}</div>
+                  <div class="col-3" />
+                </div>
                 <p v-if="sensor.isAlarm" class="alarm">{{$t('button_alarm')}}</p>
               </div>
             </div>
 
             <div class="col">
               <div v-for="sensor in rightRow" v-bind:key="sensor.id">
-                {{sensor.id}}: {{toFloat2(sensor.voltage)}}
+                <div class="row">
+                  <div class="col-3">{{sensor.id}}:</div>
+                  <div class="col-6" style="text-align: right;">{{toFloat2(sensor.voltage)}}</div>
+                  <div class="col-3" />
+                </div>
                 <p v-if="sensor.isAlarm" class="alarm">{{$t('button_alarm')}}</p>
               </div>
             </div>
