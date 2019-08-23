@@ -3,5 +3,8 @@
 
 export default {
   failed: "Action failed",
-  success: "Action was successful"
+  success: "Action was successful",
+  button_menu: "Menu",
+  button_previous: "Previous",
+  button_next: "Next"
 };
