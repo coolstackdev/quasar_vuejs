@@ -1,14 +1,31 @@
 // app global css
+fluid-font-size($minimumSize = 12, $maximumSize = 36, $minimumViewportWidth = 300, $maximumViewportWidth = 1600)
+  font-size: 'calc(%spx + (%s - %s) * ((100vw - %spx) / (%s - %s))) !important' % ($minimumSize $maximumSize $minimumSize $minimumViewportWidth $maximumViewportWidth $minimumViewportWidth)
+
+for num in (8..28)
+  .fontsize-{num}
+    fluid-font-size num (num*2+2) 300 1800
+
+p {
+  margin: 0;  
+}
+
 .fa {
   font-family: FontAwesome;
 }
 
 .screen {
   outline: solid;
-  outline-width: 20px;
-  width: 600px !important;
-  height: 400px !important;
-  margin: 0 auto 0 auto;
+  outline-width: 16px;
+  min-width: 500px;
+  min-height: 400px;
+  max-width: 750px;
+  max-height: 600px;
+  font-family: monospace;
+
+  width: 500px;
+  height: 400px;
+  margin: auto;
 }
 
 .q-pa-md {
@@ -17,33 +34,101 @@
 
 .content {
   width: 100%;
-  height: 350px !important;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
+button {
+  margin: 0;
+  padding: 0.65em 1em;
+  border: 1px solid black;
+  color: black;
+  fluid-font-size 12 (12*2+2) 300 1800
+}
 
-// $color = rgb(150, 150, 150) 
+button:active:focus,
+button:focus {
+  outline: none;
+  box-shadow: none;
+}
 
-// textarea::-webkit-input-placeholder {
-//   color: $color;
-// }
+.nav-button {
+  width: 150px;
+  margin: 0;
+}
 
-// textarea:-moz-placeholder {
-//   /* Firefox 18- */
-//   color: $color;
-// }
+.alert {
+  color: red;
+  border-color: red;  
+}
 
-// textarea::-moz-placeholder {
-//   /* Firefox 19+ */
-//   color: $color;
-// }
+.blue {
+  color: blue;  
+}
 
-// textarea:-ms-input-placeholder {
-//   color: $color;
-// }
+.dash {
+  border-style: double;
+  border-radius: 0;
+  border-width: 0.15em;
+  fluid-font-size 30 (30*2+2) 300 1800
+  padding: 0 0.5em;
+}
 
-// textarea::placeholder {
-//   color: $color;
-// }
+.min-line {
+  line-height: 0.8em;
+  height: 1em;
+}
+
+.clear {
+  border: none;
+  padding: 0;
+}
+
+.container-left-right {
+  margin: 0 15px;
+}
+
+@media only screen and (max-width: 800px) {
+  .screen {
+    width: 500px;
+    height: 400px;
+    outline: none;
+  }
+  .content {
+    height: 350px;
+  }
+}
+
+@media only screen and (max-width: 1200px) and (min-width: 800px) {
+  .screen {
+    margin-top: 120px;
+    width: 600px;
+    height: 500px;
+  }
+  button {
+    padding: 0.5em 1em;
+  }
+  .nav-button {
+    width: 180px;
+  }
+  .content {
+    height: 437.5px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .screen {
+    margin-top: 150px;
+    width: 750px;
+    height: 600px;
+  }
+  button {
+    padding: 0.35em 0.7em;
+  }
+  .nav-button {
+    width: 220px;
+  }
+  .content {
+    height: 525px;
+  }
+}

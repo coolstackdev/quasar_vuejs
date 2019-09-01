@@ -22,17 +22,20 @@
 
           <div class="row">
             <div style="text-align: center; width: 100%;">
-              <button class="blue dash">
-                <i class="fa fa-tint" aria-hidden="true"></i>
-                15.4 %
+              <p class="fontsize-16">{{ $t("string_lastboard") }}</p>
+              <p class="fontsize-16">{{ $t("string_peak") }}</p>
+              <button class="dash">
+                0.0
               </button>
-              <p class="fontsize-18" style="margin-top: 1em;">
-                {{ $t("string_mark") }}
+              <p class="fontsize-16">{{ $t("string_average") }}</p>
+              <button class="dash">
+                0.0
+              </button>
+              <p class="fontsize-13">
+                {{
+                  $t("string_mark_")
+                }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               </p>
-              <p class="fontsize-10" style="margin-top: 1em;">
-                {{ $t("string_chain") }}
-              </p>
-              <p class="fontsize-10">{{ $t("string_lsen") }}</p>
             </div>
           </div>
         </div>
@@ -76,6 +79,6 @@
 
 <script>
 export default {
-  name: "Index"
+  name: "Home2"
 };
 </script>

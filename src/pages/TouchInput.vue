@@ -11,7 +11,11 @@
         />
         <p v-if="error" class="error">Please input valid integer value.</p>
       </div>
-      <SimpleKeyboard @onChange="onChange" @onKeyPress="onKeyPress" :input="input" />
+      <SimpleKeyboard
+        @onChange="onChange"
+        @onKeyPress="onKeyPress"
+        :input="input"
+      />
     </div>
   </q-page>
 </template>

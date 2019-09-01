@@ -20,8 +20,19 @@ const routes = [
     // },
     children: [
       { path: "", component: () => import("pages/Index.vue") },
-      { path: "all", component: () => import("pages/AllSensorVoltage.vue") },
+      {
+        path: "allvolt",
+        component: () => import("pages/AllSensorVoltage.vue")
+      },
+      { path: "allmc", component: () => import("pages/AllMcPercentage.vue") },
       { path: "home3", component: () => import("pages/Home3.vue") },
+      { path: "home2", component: () => import("pages/Home2.vue") },
+      { path: "main", component: () => import("pages/MainMenu.vue") },
+      { path: "about", component: () => import("pages/About.vue") },
+      { path: "password", component: () => import("pages/Password.vue") },
+      { path: "alarms", component: () => import("pages/Alarms.vue") },
+      { path: "alarmlog", component: () => import("pages/AlarmLog.vue") },
+      { path: "alarmsetup", component: () => import("pages/AlarmSetup.vue") },
       { path: "touch", component: () => import("pages/TouchInput.vue") }
     ]
   }

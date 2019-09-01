@@ -1,7 +1,7 @@
 <template>
   <ul>
     <li v-for="lang in languages" :key="lang">
-      <a @click="changeLang(lang)">{{lang}}</a>
+      <a @click="changeLang(lang)">{{ lang }}</a>
     </li>
   </ul>
 </template>

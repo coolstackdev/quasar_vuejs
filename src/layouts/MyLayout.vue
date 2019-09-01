@@ -1,6 +1,6 @@
 <template>
   <q-layout>
-    <LanguageSwithcer />
+    <!-- <LanguageSwithcer /> -->
     <q-page-container>
       <router-view />
     </q-page-container>
@@ -8,11 +8,11 @@
 </template>
 
 <script>
-import LanguageSwithcer from "../components/LanguageSwitcher";
+// import LanguageSwithcer from "../components/LanguageSwitcher";
 export default {
   name: "MyLayout",
   components: {
-    LanguageSwithcer
+    // LanguageSwithcer
   }
 };
 </script>

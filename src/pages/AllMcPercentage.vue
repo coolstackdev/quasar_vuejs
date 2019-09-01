@@ -11,7 +11,7 @@
             </div>
             <div class="col">
               <p class="fontsize-24">
-                {{ $t("string_volts") }}
+                {{ $t("string_mc") }}
               </p>
             </div>
           </div>
@@ -33,7 +33,9 @@
                     <p class="fontsize-24">{{ sensor.id }}:</p>
                   </div>
                   <div class="col-6" style="text-align: right;">
-                    <p class="fontsize-24">{{ toFloat2(sensor.voltage) }}V</p>
+                    <p class="fontsize-24">
+                      {{ toFloat2(sensor.percentage) }}%
+                    </p>
                   </div>
                   <div class="col-3" />
                 </div>
@@ -50,7 +52,9 @@
                     <p class="fontsize-24">{{ sensor.id }}:</p>
                   </div>
                   <div class="col-6" style="text-align: right;">
-                    <p class="fontsize-24">{{ toFloat2(sensor.voltage) }}V</p>
+                    <p class="fontsize-24">
+                      {{ toFloat2(sensor.percentage) }}%
+                    </p>
                   </div>
                   <div class="col-3" />
                 </div>
@@ -102,7 +106,7 @@
 
 <script>
 export default {
-  name: "AllSensor",
+  name: "AllMc",
   methods: {
     toFloat2(val) {
       var num = val;
@@ -130,42 +134,42 @@ export default {
       sensors: [
         {
           id: 1,
-          voltage: 0,
+          percentage: -4.5,
           isAlarm: true
         },
         {
           id: 2,
-          voltage: 0,
+          percentage: 0,
           isAlarm: false
         },
         {
           id: 3,
-          voltage: 12.03,
+          percentage: 12.03,
           isAlarm: false
         },
         {
           id: 4,
-          voltage: 0,
+          percentage: 0,
           isAlarm: true
         },
         {
           id: 5,
-          voltage: 0,
+          percentage: 0,
           isAlarm: false
         },
         {
           id: 6,
-          voltage: 1.8,
+          percentage: 1.8,
           isAlarm: true
         },
         {
           id: 7,
-          voltage: 0,
+          percentage: 0,
           isAlarm: false
         },
         {
           id: 8,
-          voltage: 0,
+          percentage: 0,
           isAlarm: false
         }
       ]

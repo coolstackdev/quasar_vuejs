@@ -5,24 +5,22 @@
         <div class="q-pa-md full">
           <div class="row">
             <div class="col">
-              <a href="#" class="hollow button width-112">{{$t('button_alarm')}}</a>
+              <button>
+                {{ $t("string_alarm") }}
+              </button>
             </div>
             <div class="col">
-              <p class="sub_item">{{$t('string_first')}}:</p>
-              <p class="sub_item">{{$t('string_last')}}:</p>
-              <p class="sub_item">{{$t('string_mean')}}:</p>
+              <p class="fontsize-12 min-line">{{ $t("string_first") }}:</p>
+              <p class="fontsize-12 min-line">{{ $t("string_last") }}:</p>
+              <p class="fontsize-12 min-line">{{ $t("string_mean") }}:</p>
             </div>
             <div class="col">
-              <p class="sub_item"></p>
-              <p class="sub_item"></p>
-              <p class="sub_item">{{$t('string_STD')}}:</p>
+              <p class="fontsize-12 min-line"></p>
+              <p class="fontsize-12 min-line"></p>
+              <p class="fontsize-12 min-line">{{ $t("string_STD") }}:</p>
             </div>
             <div class="col">
-              <a
-                href="#"
-                class="hollow button width-112"
-                style="float: right"
-              >{{$t('button_clear')}}</a>
+              <button style="float: right">{{ $t("string_clear") }}</button>
             </div>
           </div>
 
@@ -34,42 +32,43 @@
         </div>
       </div>
 
-      <Navigation />
+      <div class="row container-left-right">
+        <div class="col">
+          <button class="nav-button">
+            <i
+              class="fa fa-chevron-left margin-right-10"
+              aria-hidden="true"
+            ></i>
+            {{ $t("string_previous") }}
+          </button>
+        </div>
+        <div class="col" style="display: flex; justify-content: center;">
+          <button class="nav-button">
+            <i class="fa fa-bars margin-right-10" aria-hidden="true"></i>
+            {{ $t("string_menu") }}
+          </button>
+        </div>
+        <div class="col">
+          <button class="nav-button" style="float: right">
+            {{ $t("string_next") }}
+            <i
+              class="fa fa-chevron-right margin-left-10"
+              aria-hidden="true"
+            ></i>
+          </button>
+        </div>
+      </div>
     </div>
   </q-page>
 </template>
 
-<style scoped>
-.alarm {
-  font-size: 13px;
-  line-height: 0;
-  position: absolute;
-}
-
-.sub_item {
-  font-size: 13px;
-  line-height: 0;
-  height: 1px;
-}
-
-.full {
-  width: 100%;
-  height: 100%;
-  font-size: 2.5em;
-  font-family: monospace;
-  font-weight: bold;
-}
-</style>>
+<style scoped></style>
 
 <script>
-import Navigation from "../components/Navigation.vue";
 import ApexCharts from "apexcharts";
 
 export default {
   name: "Home3",
-  components: {
-    Navigation
-  },
   mounted() {
     var i;
 
@@ -92,8 +91,7 @@ export default {
       options: {
         chart: {
           id: "vuechart-example",
-          type: "bar",
-          height: 280
+          type: "bar"
         },
         xaxis: {
           categories: []
