@@ -26,7 +26,7 @@
               <div style="text-align: center; width: 100%;">
                 <button class="blue dash fontsize-16">
                   <i class="fa fa-tint" aria-hidden="true"></i>
-                  15.4 %
+                  <a id="amcid">00.0 %</a>
                 </button>
                 <p class="fontsize-16" style="margin-top: 5px;">
                   {{ $t("MARKH2_STR") }}
