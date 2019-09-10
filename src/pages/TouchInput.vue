@@ -7,7 +7,7 @@
             :value="input"
             class="inputbox"
             @input="onInputChange"
-            :placeholder="$t('string_tap_to')"
+            placeholder="Input the valid numbers only"
             ref="input"
           />
           <p v-if="error" class="error">Please input valid integer value.</p>

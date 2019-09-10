@@ -24,13 +24,8 @@
                   {{ $t("AL_ACTIVE_STR") }}
                 </p>
               </div>
-              <div class="col-5">
-                <p class="fontsize-18">
-                  {{ $t("VIEW_LOG_STR") }}
-                </p>
-              </div>
-              <div class="col-1">
-                <button style="width: 100%; height: 100%;"></button>
+              <div class="col-6">
+                <button style="float: right;">{{ $t("VIEW_LOG_STR") }}</button>
               </div>
               <div class="col-1"></div>
             </div>
