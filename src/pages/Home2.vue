@@ -27,11 +27,11 @@
                 <p class="fontsize-12">{{ $t("LAST_BD_STR") }}</p>
                 <p class="fontsize-12">{{ $t("MKL_PEAK_STR") }}</p>
                 <button class="dash">
-                  0.0
+                  <a id="pmcid">00.0 %</a>
                 </button>
                 <p class="fontsize-12">{{ $t("AVGH2_STR") }}</p>
                 <button class="dash">
-                  0.0
+                  <a id="amcid">00.0 %</a>
                 </button>
                 <p class="fontsize-12">
                   {{
