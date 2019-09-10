@@ -10,12 +10,11 @@
                   {{ $t("ALARMS_STR") }}
                 </p>
               </div>
-              <div class="col-7 fontsize-18">
-                <button style="float: right;">
+              <div class="col-8 fontsize-18">
+                <button style="float: right; margin-right: 10px">
                   {{ $t("AL_RESET_STR") }}
                 </button>
               </div>
-              <div class="col-1"></div>
             </div>
 
             <div class="row screen-row">
@@ -24,10 +23,11 @@
                   {{ $t("AL_ACTIVE_STR") }}
                 </p>
               </div>
-              <div class="col-6">
-                <button style="float: right;">{{ $t("VIEW_LOG_STR") }}</button>
+              <div class="col-7">
+                <button style="float: right; margin-right: 10px">
+                  {{ $t("VIEW_LOG_STR") }}
+                </button>
               </div>
-              <div class="col-1"></div>
             </div>
             <div class="row screen-row alram-content">
               <p class="fontsize-14" v-for="item in alarms" :key="item">
@@ -45,7 +45,7 @@
                 </button>
               </div>
               <div class="col" style="display: flex; justify-content: center;">
-                <button class="nav-button">
+                <button class="nav-button" @click="home">
                   <i class="fa fa-home margin-right-10" aria-hidden="true"></i>
                   {{ $t("W_HOME_STR") }}
                 </button>
@@ -70,6 +70,11 @@
 <script>
 export default {
   name: "Alarms",
+  methods: {
+    home() {
+      this.$router.push({ path: "/" });
+    }
+  },
   data() {
     return {
       alarms: ["CAN Bus Error", "Max Alarm Count"]

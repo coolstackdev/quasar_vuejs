@@ -18,7 +18,10 @@
               <p class="fontsize-12 min-line">{{ $t("RPT_STD_STR") }}</p>
             </div>
             <div class="col">
-              <button class="fontsize-10" style="float: right">
+              <button
+                class="fontsize-10"
+                style="float: right; margin-right: 10px"
+              >
                 {{ $t("W_BTN_CLEAR_STR") }}
               </button>
             </div>
@@ -41,7 +44,7 @@
               </button>
             </div>
             <div class="col" style="display: flex; justify-content: center;">
-              <button class="nav-button">
+              <button class="nav-button" @click="mainmenu">
                 <i class="fa fa-bars margin-right-10" aria-hidden="true"></i>
                 {{ $t("MENU_STR") }}
               </button>
@@ -67,6 +70,11 @@ import ApexCharts from "apexcharts";
 
 export default {
   name: "Home3",
+  methods: {
+    mainmenu() {
+      this.$router.push({ path: "/main" });
+    }
+  },
   mounted() {
     var i;
 
