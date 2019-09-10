@@ -123,15 +123,15 @@ function requestData() {
     });
 }
 
-$(document).ready(function () {
-    var fullscreen = document.getElementById("fullscreen");
+// $(document).ready(function () {
+//     var fullscreen = document.getElementById("fullscreen");
 
 
-    fullscreen.onclick = function () {
-        if (!document.fullscreenElement) {            
-            openFullScreen();
-        }
-    }
+//     fullscreen.onclick = function () {
+//         if (!document.fullscreenElement) {            
+//             openFullScreen();
+//         }
+//     }
 
-    setInterval(requestData, 1000);
-});
+//     setInterval(requestData, 1000);
+// });

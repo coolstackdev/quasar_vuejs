@@ -5,64 +5,62 @@
         <div class="q-pa-md full">
           <div class="row">
             <div class="col">
-              <button>
-                {{ $t("string_alarm") }}
+              <button class="fontsize-10">
+                {{ $t("ALARM_STR") }}
               </button>
             </div>
             <div class="col">
-              <p class="fontsize-12 min-line">{{ $t("string_first") }}:</p>
-              <p class="fontsize-12 min-line">{{ $t("string_last") }}:</p>
-              <p class="fontsize-12 min-line">{{ $t("string_mean") }}:</p>
+              <p class="fontsize-12 min-line">{{ $t("FIRST_STR") }}</p>
+              <p class="fontsize-12 min-line">{{ $t("LAST_STR") }}</p>
+              <p class="fontsize-12 min-line">{{ $t("MEAN_STR") }}</p>
             </div>
             <div class="col">
-              <p class="fontsize-12 min-line"></p>
-              <p class="fontsize-12 min-line"></p>
-              <p class="fontsize-12 min-line">{{ $t("string_STD") }}:</p>
+              <p class="fontsize-12 min-line">{{ $t("RPT_STD_STR") }}</p>
             </div>
             <div class="col">
-              <button style="float: right">{{ $t("string_clear") }}</button>
+              <button class="fontsize-10" style="float: right">
+                {{ $t("W_BTN_CLEAR_STR") }}
+              </button>
             </div>
           </div>
 
-          <div class="row">
-            <div class="col">
+          <div class="row ">
+            <div class="col socket">
               <div id="chart" ref="barchart"></div>
             </div>
           </div>
-        </div>
-      </div>
 
-      <div class="row container-left-right">
-        <div class="col">
-          <button class="nav-button">
-            <i
-              class="fa fa-chevron-left margin-right-10"
-              aria-hidden="true"
-            ></i>
-            {{ $t("string_previous") }}
-          </button>
-        </div>
-        <div class="col" style="display: flex; justify-content: center;">
-          <button class="nav-button">
-            <i class="fa fa-bars margin-right-10" aria-hidden="true"></i>
-            {{ $t("string_menu") }}
-          </button>
-        </div>
-        <div class="col">
-          <button class="nav-button" style="float: right">
-            {{ $t("string_next") }}
-            <i
-              class="fa fa-chevron-right margin-left-10"
-              aria-hidden="true"
-            ></i>
-          </button>
+          <div class="row container-left-right">
+            <div class="col">
+              <button class="nav-button">
+                <i
+                  class="fa fa-chevron-left margin-right-10"
+                  aria-hidden="true"
+                ></i>
+                {{ $t("PREV_STR") }}
+              </button>
+            </div>
+            <div class="col" style="display: flex; justify-content: center;">
+              <button class="nav-button">
+                <i class="fa fa-bars margin-right-10" aria-hidden="true"></i>
+                {{ $t("MENU_STR") }}
+              </button>
+            </div>
+            <div class="col">
+              <button class="nav-button" style="float: right">
+                {{ $t("NEXT_STR") }}
+                <i
+                  class="fa fa-chevron-right margin-left-10"
+                  aria-hidden="true"
+                ></i>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </q-page>
 </template>
-
-<style scoped></style>
 
 <script>
 import ApexCharts from "apexcharts";
@@ -91,7 +89,9 @@ export default {
       options: {
         chart: {
           id: "vuechart-example",
-          type: "bar"
+          type: "bar",
+          width: 768,
+          height: 270
         },
         xaxis: {
           categories: []

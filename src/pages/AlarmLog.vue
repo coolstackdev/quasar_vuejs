@@ -1,101 +1,73 @@
 <template>
-  <q-page class="fixed-padding">
-    <div class="screen">
-      <div class="content">
-        <div class="q-pa-md">
-          <div class="row screen-row">
-            <div class="col-2"></div>
-            <div class="col-10">
-              <p class="fontsize-20">
-                {{ $t("string_alarm_history_log") }}
-              </p>
+  <div class="AlarmLog">
+    <q-page class="fixed-padding ">
+      <div class="screen">
+        <div class="content">
+          <div class="q-pa-md">
+            <div class="row screen-row">
+              <div class="col-2"></div>
+              <div class="col-10">
+                <p class="fontsize-16">
+                  {{ $t("ALARM_HISTORY_STR") }}
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div class="row screen-row">
-            <div class="col-4">
-              <p class="fontsize-20">
-                {{ $t("string_time") }}
-              </p>
+            <div class="row screen-row">
+              <div class="col-4">
+                <p class="fontsize-16">
+                  {{ $t("AH_TIME_STR") }}
+                </p>
+              </div>
+              <div class="col-4">
+                <p class="fontsize-16">
+                  {{ $t("AH_DESC_STR") }}
+                </p>
+              </div>
+              <div class="col-4">
+                <button class="fontsize-12" style="float: right;">
+                  {{ $t("AH_UPDATE_STR") }}
+                </button>
+              </div>
             </div>
-            <div class="col-4">
-              <p class="fontsize-20">
-                {{ $t("string_desc") }}
-              </p>
-            </div>
-            <div class="col-4">
-              <button style="float: right;">
-                {{ $t("string_update") }}
-              </button>
-            </div>
-          </div>
 
-          <div class="row screen-row alram-content">
-            <p class="fontsize-12" v-for="item in alarms" :key="item.id">
-              {{ item.timestamp }}&nbsp;{{ item.message }}
-            </p>
+            <div class="row screen-row alram-content">
+              <p class="fontsize-8" v-for="item in alarms" :key="item.id">
+                {{ item.timestamp }}&nbsp;{{ item.message }}
+              </p>
+            </div>
+            <div class="row container-left-right nav-bar">
+              <div class="col">
+                <button class="nav-button">
+                  <i
+                    class="fa fa-chevron-left margin-right-10 "
+                    aria-hidden="true"
+                  ></i>
+                  {{ $t("PREV_STR") }}
+                </button>
+              </div>
+              <div class="col" style="display: flex; justify-content: center;">
+                <button class="nav-button">
+                  <i class="fa fa-home margin-right-10" aria-hidden="true"></i>
+                  {{ $t("W_HOME_STR") }}
+                </button>
+              </div>
+              <div class="col">
+                <button class="nav-button" style="float: right">
+                  {{ $t("NEXT_STR") }}
+                  <i
+                    class="fa fa-chevron-right margin-left-10"
+                    aria-hidden="true"
+                  ></i>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-      <div class="row container-left-right">
-        <div class="col">
-          <button class="nav-button">
-            <i
-              class="fa fa-chevron-left margin-right-10"
-              aria-hidden="true"
-            ></i>
-            {{ $t("string_previous") }}
-          </button>
-        </div>
-        <div class="col" style="display: flex; justify-content: center;">
-          <button class="nav-button">
-            <i class="fa fa-home margin-right-10" aria-hidden="true"></i>
-            {{ $t("string_home") }}
-          </button>
-        </div>
-        <div class="col">
-          <button class="nav-button" style="float: right">
-            {{ $t("string_next") }}
-            <i
-              class="fa fa-chevron-right margin-left-10"
-              aria-hidden="true"
-            ></i>
-          </button>
-        </div>
-      </div>
-    </div>
-  </q-page>
+    </q-page>
+  </div>
 </template>
-
-<style scoped>
-.fixed-padding {
-  padding: 0;
-}
-
-.q-pa-md {
-  padding: 0;
-}
-
-.alram-content {
-  border-top: solid;
-  display: block;
-}
-
-@media only screen and (max-width: 800px) {
-  .alram-content {
-    border-top: none;
-  }
-}
-
-p {
-  padding-left: 10px;
-}
-
-.screen-row {
-  margin: 5px 0;
-}
-</style>
 
 <script>
 export default {

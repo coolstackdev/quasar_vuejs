@@ -1,114 +1,101 @@
 <template>
-  <q-page>
-    <div class="screen">
-      <div class="content">
-        <div class="q-pa-md">
-          <div class="row content-row">
-            <div class="col-4"></div>
-            <div class="col-8">
-              <button class="clear">
-                <p class="fontsize-20">
-                  {{ $t("string_mainmenu") }}
-                </p>
-              </button>
+  <div class="MainMenu">
+    <q-page>
+      <div class="screen">
+        <div class="content">
+          <div class="q-pa-md" style="padding:10px">
+            <div class="row content-row">
+              <div class="col-4"></div>
+              <div class="col-8">
+                <button class="clear">
+                  <p class="fontsize-18">
+                    {{ $t("MAIN_MENU_STR") }}
+                  </p>
+                </button>
+              </div>
             </div>
-          </div>
 
-          <div class="row content-row">
-            <div class="col-6 left-menu-button">
-              <button class="menu-button">
-                {{ $t("string_markers") }}
-              </button>
+            <div class="row content-row">
+              <div class="col-6 left-menu-button">
+                <button class="menu-button fontsize-8">
+                  {{ $t("MARK_CONFIG_STR") }}
+                </button>
+              </div>
+              <div class="col-6">
+                <button class="menu-button fontsize-8">
+                  {{ $t("W_MATERIAL_STR") }}
+                </button>
+              </div>
             </div>
-            <div class="col-6">
-              <button class="menu-button">
-                {{ $t("string_material") }}
-              </button>
-            </div>
-          </div>
 
-          <div class="row content-row">
-            <div class="col-6 left-menu-button">
-              <button class="menu-button">
-                {{ $t("string_sensors") }}
-              </button>
+            <div class="row content-row">
+              <div class="col-6 left-menu-button">
+                <button class="menu-button fontsize-8">
+                  {{ $t("M_SENSORS_STR") }}
+                </button>
+              </div>
+              <div class="col-6">
+                <button class="menu-button fontsize-8">
+                  {{ $t("OPTIONS_STR") }}
+                </button>
+              </div>
             </div>
-            <div class="col-6">
-              <button class="menu-button">
-                {{ $t("string_options") }}
-              </button>
-            </div>
-          </div>
 
-          <div class="row content-row">
-            <div class="col-6 left-menu-button">
-              <button class="menu-button">
-                {{ $t("string_colibrate") }}
-              </button>
+            <div class="row content-row">
+              <div class="col-6 left-menu-button">
+                <button class="menu-button fontsize-8">
+                  {{ $t("SEN_CAL_STR") }}
+                </button>
+              </div>
+              <div class="col-6">
+                <button class="menu-button fontsize-8">
+                  {{ $t("ALM_ALARMS_STR") }}
+                </button>
+              </div>
             </div>
-            <div class="col-6">
-              <button class="menu-button">
-                {{ $t("string_alarms") }}
-              </button>
-            </div>
-          </div>
 
-          <div class="row content-row">
-            <div class="col-6 left-menu-button">
-              <button class="menu-button">
-                {{ $t("string_system") }}
-              </button>
+            <div class="row content-row">
+              <div class="col-6 left-menu-button">
+                <button class="menu-button fontsize-8">
+                  {{ $t("M_SYSTEM_STR") }}
+                </button>
+              </div>
+              <div class="col-6">
+                <button class="menu-button fontsize-8">
+                  {{ $t("REPORT_STR") }}
+                </button>
+              </div>
             </div>
-            <div class="col-6">
-              <button class="menu-button">
-                {{ $t("string_report") }}
-              </button>
-            </div>
-          </div>
 
-          <div class="row content-row">
-            <div class="col-6 left-menu-button">
-              <button class="menu-button">
-                {{ $t("string_version") }}
-              </button>
+            <div class="row content-row">
+              <div class="col-6 left-menu-button ">
+                <button class="menu-button fontsize-8">
+                  {{ $t("NETMASK_STR") }}
+                </button>
+              </div>
+              <div class="col-6">
+                <button class="menu-button fontsize-8">
+                  {{ $t("M_LANGUAGE_STR") }}
+                </button>
+              </div>
             </div>
-            <div class="col-6">
-              <button class="menu-button">
-                {{ $t("string_language") }}
-              </button>
+
+            <div class="row container-left-right nav-bar">
+              <div class="col"></div>
+              <div class="col" style="display: flex; justify-content: center;">
+                <button class="nav-button">
+                  <i class="fa fa-home margin-right-10" aria-hidden="true"></i>
+                  {{ $t("W_HOME_STR") }}
+                </button>
+              </div>
+              <div class="col"></div>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="row container-left-right">
-        <div class="col"></div>
-        <div class="col" style="display: flex; justify-content: center;">
-          <button class="nav-button">
-            <i class="fa fa-home margin-right-10" aria-hidden="true"></i>
-            {{ $t("string_home") }}
-          </button>
-        </div>
-        <div class="col"></div>
-      </div>
-    </div>
-  </q-page>
+    </q-page>
+  </div>
 </template>
-
-<style scoped>
-.content-row {
-  height: 16.66%;
-}
-
-.menu-button {
-  width: 70%;
-  margin: 0 0.4em 0 0.4em;
-}
-
-.left-menu-button {
-  text-align: right;
-}
-</style>
 
 <script>
 export default {
