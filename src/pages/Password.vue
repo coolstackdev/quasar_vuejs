@@ -73,7 +73,7 @@
                 </button>
               </div>
               <div class="col" style="display: flex; justify-content: center;">
-                <button class="nav-button">
+                <button class="nav-button" @click="home">
                   <i class="fa fa-home margin-right-10" aria-hidden="true"></i>
                   {{ $t("W_HOME_STR") }}
                 </button>
@@ -97,6 +97,11 @@
 
 <script>
 export default {
-  name: "Password"
+  name: "Password",
+  methods: {
+    home() {
+      this.$router.push({ path: "/" });
+    }
+  }
 };
 </script>

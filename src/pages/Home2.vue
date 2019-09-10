@@ -51,7 +51,7 @@
                 </button>
               </div>
               <div class="col" style="display: flex; justify-content: center;">
-                <button class="nav-button">
+                <button class="nav-button" @click="mainmenu">
                   <i class="fa fa-bars margin-right-10" aria-hidden="true"></i>
                   {{ $t("MENU_STR") }}
                 </button>
@@ -75,6 +75,11 @@
 
 <script>
 export default {
-  name: "Home2"
+  name: "Home2",
+  methods: {
+    mainmenu() {
+      this.$router.push({ path: "/main" });
+    }
+  }
 };
 </script>

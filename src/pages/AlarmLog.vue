@@ -25,7 +25,10 @@
                 </p>
               </div>
               <div class="col-4">
-                <button class="fontsize-12" style="float: right;">
+                <button
+                  class="fontsize-12"
+                  style="float: right; margin-right: 10px"
+                >
                   {{ $t("AH_UPDATE_STR") }}
                 </button>
               </div>
@@ -47,14 +50,14 @@
                 </button>
               </div>
               <div class="col" style="display: flex; justify-content: center;">
-                <button class="nav-button">
+                <button class="nav-button" @click="home">
                   <i class="fa fa-home margin-right-10" aria-hidden="true"></i>
                   {{ $t("W_HOME_STR") }}
                 </button>
               </div>
               <div class="col">
                 <button class="nav-button" style="float: right">
-                  {{ $t("NEXT_STR") }}
+                  {{ $t("CLEAR_STR") }}
                   <i
                     class="fa fa-chevron-right margin-left-10"
                     aria-hidden="true"
@@ -72,6 +75,11 @@
 <script>
 export default {
   name: "Alarms",
+  methods: {
+    home() {
+      this.$router.push({ path: "/" });
+    }
+  },
   data() {
     return {
       alarms: [

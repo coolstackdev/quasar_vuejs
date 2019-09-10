@@ -32,13 +32,13 @@
 
             <div class="row row-column">
               <p class="fontsize-14">
-                {{ $t("string_aboutus") }}
+                Wagner Electronics
               </p>
               <p class="fontsize-14">
-                {{ $t("string_phonenumber") }}
+                (541) 582-0541
               </p>
               <p class="fontsize-12">
-                {{ $t("string_url") }}
+                www.wagnermeters.com
               </p>
             </div>
             <div class="row container-left-right nav-bar">
@@ -52,7 +52,7 @@
                 </button>
               </div>
               <div class="col" style="display: flex; justify-content: center;">
-                <button class="nav-button">
+                <button class="nav-button" @click="home">
                   <i class="fa fa-home margin-right-10" aria-hidden="true"></i>
                   {{ $t("W_HOME_STR") }}
                 </button>
@@ -73,6 +73,11 @@ export default {
     return {
       version: "05.28"
     };
+  },
+  methods: {
+    home() {
+      this.$router.push({ path: "/" });
+    }
   }
 };
 </script>

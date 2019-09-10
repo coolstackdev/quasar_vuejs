@@ -25,7 +25,13 @@
             <div class="row">
               <div style="text-align: center; width: 100%;">
                 <button class="blue dash fontsize-16">
-                  <a><i class="fa fa-tint" aria-hidden="true"></i></a>
+                  <a
+                    ><i
+                      class="fa fa-tint"
+                      aria-hidden="true"
+                      style="margin-right: 12px"
+                    ></i
+                  ></a>
                   <a id="amcid">00.0 %</a>
                 </button>
                 <p class="fontsize-16" style="margin-top: 5px;">
@@ -53,7 +59,7 @@
                 </button>
               </div>
               <div class="col" style="display: flex; justify-content: center;">
-                <button class="nav-button">
+                <button class="nav-button" @click="mainmenu">
                   <i class="fa fa-bars margin-right-10" aria-hidden="true"></i>
                   {{ $t("MENU_STR") }}
                 </button>
@@ -77,6 +83,11 @@
 
 <script>
 export default {
-  name: "Index"
+  name: "Index",
+  methods: {
+    mainmenu() {
+      this.$router.push({ path: "/main" });
+    }
+  }
 };
 </script>
