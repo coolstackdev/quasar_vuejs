@@ -26,13 +26,19 @@
               <div style="text-align: center; width: 100%;">
                 <p class="fontsize-12">{{ $t("LAST_BD_STR") }}</p>
                 <p class="fontsize-12">{{ $t("MKL_PEAK_STR") }}</p>
-                <button class="dash">
-                  <a id="pmcid">00.0 %</a>
-                </button>
+                <div class="row">
+                  <div class="col-5"></div>
+                  <button class="dash col-2">
+                    <a id="avgavgid" style="color: black">00.0 %</a>
+                  </button>
+                </div>
                 <p class="fontsize-12">{{ $t("AVGH2_STR") }}</p>
-                <button class="dash">
-                  <a id="amcid">00.0 %</a>
-                </button>
+                <div class="row">
+                  <div class="col-5"></div>
+                  <button class="dash col-2">
+                    <a id="peakavgid" style="color: black">00.0 %</a>
+                  </button>
+                </div>
                 <p class="fontsize-12">
                   {{
                     $t("MARKH2_STR")

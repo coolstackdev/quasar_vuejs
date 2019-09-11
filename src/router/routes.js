@@ -33,7 +33,31 @@ const routes = [
       { path: "alarms", component: () => import("pages/Alarms.vue") },
       { path: "alarmlog", component: () => import("pages/AlarmLog.vue") },
       { path: "alarmsetup", component: () => import("pages/AlarmSetup.vue") },
-      { path: "touch", component: () => import("pages/TouchInput.vue") }
+      { path: "touch", component: () => import("pages/TouchInput.vue") },
+      {
+        path: "calculationresults",
+        component: () => import("pages/CalculationResults.vue")
+      },
+      {
+        path: "calibrationeditor",
+        component: () => import("pages/CalibrationDataEditor.vue")
+      },
+      {
+        path: "clibrationentry",
+        component: () => import("pages/ClibrationDataEntry.vue")
+      },
+      {
+        path: "dnssetup",
+        component: () => import("pages/DnsSetUp.vue")
+      },
+      {
+        path: "encodersetup",
+        component: () => import("pages/EncoderSetup.vue")
+      },
+      {
+        path: "calibrationwarning",
+        component: () => import("pages/HeadCalibrationWarning.vue")
+      }
     ]
   }
 ];

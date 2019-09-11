@@ -1,6 +1,6 @@
 <template>
   <div class="TouchInput">
-    <q-page padding>
+    <q-page>
       <div class="screen">
         <div class="available_area">
           <input
@@ -16,6 +16,7 @@
           @onChange="onChange"
           @onKeyPress="onKeyPress"
           :input="input"
+          style="background-color:#FFF"
         />
       </div>
     </q-page>
@@ -45,7 +46,7 @@ export default {
     }
   },
   methods: {
-    allnumeric(inputtxt) {
+    isAllNumber(inputtxt) {
       var numbers = /^[0-9]+$/;
       if (inputtxt.match(numbers)) {
         return true;
@@ -55,7 +56,7 @@ export default {
     },
     onChange(input) {
       this.input = input;
-      if (this.allnumeric(input) === false) {
+      if (this.isAllNumber(input) === false) {
         this.error = true;
       } else {
         this.error = false;
@@ -69,7 +70,7 @@ export default {
     },
     onInputChange(input) {
       this.input = input.target.value;
-      if (this.allnumeric(this.input) === false) {
+      if (this.isAllNumber(this.input) === false) {
         this.error = true;
       } else {
         this.error = false;

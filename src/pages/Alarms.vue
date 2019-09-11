@@ -1,6 +1,6 @@
 <template>
   <div class="Alarms">
-    <q-page class="fixed-padding ">
+    <q-page class="fixed-padding">
       <div class="screen">
         <div class="content">
           <div class="q-pa-md">
@@ -29,7 +29,11 @@
                 </button>
               </div>
             </div>
-            <div class="row screen-row alram-content">
+            <div
+              class="row screen-row alram-content"
+              :class="{ overflowscroll: showScroll }"
+              style="max-height:230px;"
+            >
               <p class="fontsize-14" v-for="item in alarms" :key="item">
                 {{ item }}
               </p>
@@ -70,6 +74,7 @@
 <script>
 export default {
   name: "Alarms",
+
   methods: {
     home() {
       this.$router.push({ path: "/" });
@@ -77,8 +82,23 @@ export default {
   },
   data() {
     return {
-      alarms: ["CAN Bus Error", "Max Alarm Count"]
+      alarmsCount: null,
+      showScroll: false,
+      alarms: [
+        "CAN Bus Error",
+        "Max Alarm Count",
+        "Max Alarm Count",
+        "Max Alarm Count",
+        "Max Alarm Count",
+        "Max Alarm Count"
+      ]
     };
+  },
+  mounted() {
+    this.alarmsCount = this.alarms.length;
+    if (this.alarmsCount > 5) {
+      this.showScroll = true;
+    }
   }
 };
 </script>

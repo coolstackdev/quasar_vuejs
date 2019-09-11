@@ -17,7 +17,28 @@
                 <p class="fontsize-14">{{ $t("PASSWORD_STR") }}</p>
               </div>
               <div class="col-8">
-                <input type="password" class="inputbox fontsize-14" />
+                <input
+                  :value="info.password"
+                  class="inputbox fontsize-14"
+                  @input="onInputChangePassword"
+                  ref="input"
+                  type="password"
+                  @focus="
+                    showkeyboardPassword = true;
+                    showkeyboardOldPassword = false;
+                    showkeyboardNewPassword = false;
+                    showkeyboardconfirmNew = false;
+                  "
+                />
+              </div>
+              <div class="keyboard-container">
+                <SimpleKeyboard
+                  style="background-color:#FFF;"
+                  @onChange="onChangePassword"
+                  @onKeyPress="onKeyPress"
+                  :input="info.password"
+                  v-if="showkeyboardPassword == true"
+                />
               </div>
             </div>
 
@@ -36,7 +57,28 @@
                 </p>
               </div>
               <div class="col-8">
-                <input type="password" class="inputbox fontsize-14" />
+                <input
+                  :value="info.oldPassword"
+                  class="inputbox fontsize-14"
+                  @input="onInputChangeOldPassword"
+                  ref="input"
+                  type="password"
+                  @focus="
+                    showkeyboardPassword = false;
+                    showkeyboardOldPassword = true;
+                    showkeyboardNewPassword = false;
+                    showkeyboardconfirmNew = false;
+                  "
+                />
+              </div>
+              <div class="keyboard-container">
+                <SimpleKeyboard
+                  style="background-color:#FFF;"
+                  @onChange="onChangeOldPassword"
+                  @onKeyPress="onKeyPressOldPassword"
+                  :input="info.oldPassword"
+                  v-if="showkeyboardOldPassword == true"
+                />
               </div>
             </div>
 
@@ -47,7 +89,37 @@
                 </p>
               </div>
               <div class="col-8">
-                <input type="password" class="inputbox fontsize-14" />
+                <input
+                  :value="info.newPassword"
+                  class="inputbox fontsize-14"
+                  @input="onInputChangeNewPassword"
+                  ref="input"
+                  type="password"
+                  @focus="
+                    showkeyboardPassword = false;
+                    showkeyboardOldPassword = false;
+                    showkeyboardNewPassword = true;
+                    showkeyboardconfirmNew = false;
+                  "
+                />
+              </div>
+              <div class="keyboard-container">
+                <input
+                  v-if="showkeyboardNewPassword == true"
+                  :value="info.newPassword"
+                  class="inputbox fontsize-14"
+                  @input="onInputChangeNewPassword"
+                  ref="input"
+                  type="password"
+                  style="background-color:#FFF"
+                />
+                <SimpleKeyboard
+                  style="background-color:#FFF;"
+                  @onChange="onChangeNewPassword"
+                  @onKeyPress="onKeyPressNewPassword"
+                  :input="info.newPassword"
+                  v-if="showkeyboardNewPassword == true"
+                />
               </div>
             </div>
 
@@ -58,7 +130,37 @@
                 </p>
               </div>
               <div class="col-8">
-                <input type="password" class="inputbox fontsize-14" />
+                <input
+                  :value="info.confirmNew"
+                  class="inputbox fontsize-14"
+                  @input="onInputChangeconfirmNew"
+                  ref="input"
+                  type="password"
+                  @focus="
+                    showkeyboardPassword = false;
+                    showkeyboardOldPassword = false;
+                    showkeyboardNewPassword = false;
+                    showkeyboardconfirmNew = true;
+                  "
+                />
+              </div>
+              <div class="keyboard-container">
+                <input
+                  :value="info.confirmNew"
+                  class="inputbox fontsize-14"
+                  @input="onInputChangeconfirmNew"
+                  ref="input"
+                  type="password"
+                  style="background-color:#FFF"
+                  v-if="showkeyboardconfirmNew == true"
+                />
+                <SimpleKeyboard
+                  style="background-color:#FFF;"
+                  @onChange="onChangeconfirmNew"
+                  @onKeyPress="onKeyPressconfirmNew"
+                  :input="info.confirmNew"
+                  v-if="showkeyboardconfirmNew == true"
+                />
               </div>
             </div>
 
@@ -81,10 +183,10 @@
               <div class="col">
                 <button class="nav-button" style="float: right">
                   {{ $t("CHANGE_STR") }}
-                  <i
+                  <!-- <i
                     class="fa fa-chevron-right margin-left-10"
                     aria-hidden="true"
-                  ></i>
+                  ></i> -->
                 </button>
               </div>
             </div>
@@ -96,11 +198,79 @@
 </template>
 
 <script>
+import SimpleKeyboard from "../components/SimpleKeyboard";
 export default {
   name: "Password",
+  components: {
+    SimpleKeyboard
+  },
+  data() {
+    return {
+      info: {
+        password: "",
+        oldPassword: "",
+        newPassword: "",
+        confirmNew: ""
+      },
+      showkeyboardPassword: false,
+      showkeyboardOldPassword: false,
+      showkeyboardNewPassword: false,
+      showkeyboardconfirmNew: false
+    };
+  },
   methods: {
     home() {
       this.$router.push({ path: "/" });
+    },
+    onInputChangePassword(text) {
+      this.info.password = text.target.value;
+    },
+    onInputChangeOldPassword(text) {
+      this.info.oldPassword = text.target.value;
+    },
+    onInputChangeNewPassword(text) {
+      this.info.newPassword = text.target.value;
+    },
+    onInputChangeconfirmNew(text) {
+      this.info.confirmNew = text.target.value;
+    },
+
+    onChangePassword(text) {
+      this.info.password = text;
+    },
+    onChangeOldPassword(text) {
+      this.info.oldPassword = text;
+    },
+    onChangeNewPassword(text) {
+      this.info.newPassword = text;
+    },
+    onChangeconfirmNew(text) {
+      this.info.confirmNew = text;
+    },
+
+    onKeyPress(button) {
+      console.log("button", button);
+      if (button == "{enter}") {
+        this.showkeyboardPassword = false;
+      }
+    },
+    onKeyPressOldPassword(button) {
+      console.log("button", button);
+      if (button == "{enter}") {
+        this.showkeyboardOldPassword = false;
+      }
+    },
+    onKeyPressNewPassword(button) {
+      console.log("button", button);
+      if (button == "{enter}") {
+        this.showkeyboardNewPassword = false;
+      }
+    },
+    onKeyPressconfirmNew(button) {
+      console.log("button", button);
+      if (button == "{enter}") {
+        this.showkeyboardconfirmNew = false;
+      }
     }
   }
 };

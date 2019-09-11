@@ -34,7 +34,11 @@
               </div>
             </div>
 
-            <div class="row screen-row alram-content">
+            <div
+              class="row screen-row alram-content"
+              style="height:250px;"
+              :class="{ overflowscroll: showScroll }"
+            >
               <p class="fontsize-8" v-for="item in alarms" :key="item.id">
                 {{ item.timestamp }}&nbsp;{{ item.message }}
               </p>
@@ -82,6 +86,8 @@ export default {
   },
   data() {
     return {
+      alarmsCount: null,
+      showScroll: false,
       alarms: [
         {
           id: 1,
@@ -112,9 +118,40 @@ export default {
           id: 6,
           timestamp: "01/01/2003 00:01:14",
           message: "CAN BUS Error 60"
+        },
+        {
+          id: 7,
+          timestamp: "01/01/2003 00:01:14",
+          message: "CAN BUS Error 60"
+        },
+        {
+          id: 8,
+          timestamp: "01/01/2003 00:01:14",
+          message: "CAN BUS Error 60"
+        },
+        {
+          id: 9,
+          timestamp: "01/01/2003 00:01:14",
+          message: "CAN BUS Error 60"
+        },
+        {
+          id: 10,
+          timestamp: "01/01/2003 00:01:14",
+          message: "CAN BUS Error 60"
+        },
+        {
+          id: 11,
+          timestamp: "01/01/2003 00:01:14",
+          message: "CAN BUS Error 60"
         }
       ]
     };
+  },
+  mounted() {
+    this.alarmsCount = this.alarms.length;
+    if (this.alarmsCount > 10) {
+      this.showScroll = true;
+    }
   }
 };
 </script>
