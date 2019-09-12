@@ -23,6 +23,7 @@
                   @input="onInputChangePassword"
                   ref="input"
                   type="password"
+                  @keyup.esc="closeKeyboard()"
                   @focus="
                     showkeyboardPassword = true;
                     showkeyboardOldPassword = false;
@@ -32,6 +33,10 @@
                 />
               </div>
               <div class="keyboard-container">
+                <span
+                class="closeKeyboard" @click="closeKeyboard()"
+                v-if="showkeyboardPassword == true"
+                >X</span>
                 <SimpleKeyboard
                   style="background-color:#FFF;"
                   @onChange="onChangePassword"
@@ -63,6 +68,7 @@
                   @input="onInputChangeOldPassword"
                   ref="input"
                   type="password"
+                  @keyup.esc="closeKeyboard()"
                   @focus="
                     showkeyboardPassword = false;
                     showkeyboardOldPassword = true;
@@ -72,11 +78,26 @@
                 />
               </div>
               <div class="keyboard-container">
+                <input
+                  :value="info.oldPassword"
+                  class="inputbox fontsize-14"
+                  @input="onInputChangeOldPassword"
+                  ref="input"
+                  type="password"
+                  @keyup.esc="closeKeyboard()"
+                  style="background-color:#FFF"
+                  v-if="showkeyboardOldPassword == true"
+                />
+                <span
+                class="closeKeyboard" @click="closeKeyboard()"
+                v-if="showkeyboardOldPassword == true"
+                >X</span>
                 <SimpleKeyboard
                   style="background-color:#FFF;"
                   @onChange="onChangeOldPassword"
                   @onKeyPress="onKeyPressOldPassword"
                   :input="info.oldPassword"
+                  @keyup.esc="closeKeyboard()"
                   v-if="showkeyboardOldPassword == true"
                 />
               </div>
@@ -95,6 +116,7 @@
                   @input="onInputChangeNewPassword"
                   ref="input"
                   type="password"
+                  @keyup.esc="closeKeyboard()"
                   @focus="
                     showkeyboardPassword = false;
                     showkeyboardOldPassword = false;
@@ -109,10 +131,15 @@
                   :value="info.newPassword"
                   class="inputbox fontsize-14"
                   @input="onInputChangeNewPassword"
+                  @keyup.esc="closeKeyboard()"
                   ref="input"
                   type="password"
                   style="background-color:#FFF"
                 />
+                <span
+                class="closeKeyboard" @click="closeKeyboard()"
+                v-if="showkeyboardNewPassword == true"
+                >X</span>
                 <SimpleKeyboard
                   style="background-color:#FFF;"
                   @onChange="onChangeNewPassword"
@@ -136,6 +163,7 @@
                   @input="onInputChangeconfirmNew"
                   ref="input"
                   type="password"
+                  @keyup.esc="closeKeyboard()"
                   @focus="
                     showkeyboardPassword = false;
                     showkeyboardOldPassword = false;
@@ -152,8 +180,13 @@
                   ref="input"
                   type="password"
                   style="background-color:#FFF"
+                  @keyup.esc="closeKeyboard()"
                   v-if="showkeyboardconfirmNew == true"
                 />
+                <span
+                class="closeKeyboard" @click="closeKeyboard()"
+                v-if="showkeyboardconfirmNew == true"
+                >X</span>
                 <SimpleKeyboard
                   style="background-color:#FFF;"
                   @onChange="onChangeconfirmNew"
@@ -219,6 +252,12 @@ export default {
     };
   },
   methods: {
+    closeKeyboard() {
+      this.showkeyboardPassword = false,
+      this.showkeyboardOldPassword = false,
+      this.showkeyboardNewPassword = false,
+      this.showkeyboardconfirmNew = false
+    },
     home() {
       this.$router.push({ path: "/" });
     },
@@ -272,6 +311,13 @@ export default {
         this.showkeyboardconfirmNew = false;
       }
     }
-  }
+  },
+  created() {
+    window.addEventListener('keydown', (e) => {
+      if (e.key == 'Escape') {
+        this.closeKeyboard()
+      }
+    });
+  },
 };
 </script>

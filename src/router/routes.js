@@ -44,7 +44,7 @@ const routes = [
       },
       {
         path: "clibrationentry",
-        component: () => import("pages/ClibrationDataEntry.vue")
+        component: () => import("pages/CalibrationDataEntry.vue")
       },
       {
         path: "dnssetup",

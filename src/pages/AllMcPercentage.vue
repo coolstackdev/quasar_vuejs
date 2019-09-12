@@ -1,6 +1,6 @@
 <template>
   <div class="AllMcPercentage">
-    <q-page padding>
+    <q-page>
       <div class="screen">
         <div class="content">
           <div class="q-pa-md">
