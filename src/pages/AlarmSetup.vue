@@ -24,7 +24,6 @@
                   color="teal"
                   filled
                   v-model="model"
-
                   :options="options"
                 >
                 </q-select>
@@ -96,12 +95,10 @@
                     ref="input"
                     v-if="showkeyboardMax == true"
                     style="background-color:#FFF"
-                    :class="{error: validNumber}"
+                    :class="{ error: validNumber }"
                     @keyup.esc="closAllKeyboards()"
                   />
-                  <span
-                    v-if="validNumber == true"
-                    class="invalidemail"
+                  <span v-if="validNumber == true" class="invalidemail"
                     >Write Number 1~999</span
                   >
                   <SimpleKeyboard
@@ -114,7 +111,10 @@
                   />
                 </div>
               </div>
-              <div class="col-5 fontsize-12" style="padding-top:5px; padding-left:10px">
+              <div
+                class="col-5 fontsize-12"
+                style="padding-top:5px; padding-left:10px"
+              >
                 {{ $t("SAM_MAX_STR") }}&nbsp;#
               </div>
               <div class="col-6 fontsize-12" @click="enableButton()">
@@ -128,7 +128,6 @@
                 </button>
                 {{ $t("ENABLE_STR") }}
               </div>
-
             </div>
 
             <div class="row screen-row">
@@ -215,7 +214,7 @@ export default {
     return {
       input: "",
       error: "",
-      MaxLimit:'',
+      MaxLimit: "",
       enableOff: false,
       enableOn: true,
       validNumber: false,
@@ -223,14 +222,14 @@ export default {
       invalidEmail: false,
       showkeyboard: true,
       showkeyboardMax: false,
-      model: localStorage.getItem('savedSelected'),
-      emailText: localStorage.getItem('SavedEmail'),
+      model: localStorage.getItem("savedSelected"),
+      emailText: localStorage.getItem("SavedEmail"),
       setting: {
         alarm1: false,
         alarm2: false,
         out1: false,
         out2: false,
-        email: false,
+        email: false
       },
 
       options: [
@@ -248,20 +247,18 @@ export default {
     //   this.showkeyboard = false
     // },
     closAllKeyboards() {
-
-      if(this.hasError == false && this.validNumber == false) {
-        this.showkeyboard = false,
-        this.showkeyboardMax = false
+      if (this.hasError == false && this.validNumber == false) {
+        (this.showkeyboard = false), (this.showkeyboardMax = false);
       }
     },
     enableButton() {
-      this.enableOff = !this.enableOff
-      this.enableOn = !this.enableOn
-      if(this.enableOn == true) {
-        localStorage.setItem('enable', true)
+      this.enableOff = !this.enableOff;
+      this.enableOn = !this.enableOn;
+      if (this.enableOn == true) {
+        localStorage.setItem("enable", true);
       }
-      if(this.enableOn == false) {
-        localStorage.setItem('enable', false)
+      if (this.enableOn == false) {
+        localStorage.setItem("enable", false);
       }
     },
     home() {
@@ -317,30 +314,33 @@ export default {
     },
     onKeyPressMax(button) {
       console.log("button", button);
-      if (button == "{enter}" && this.MaxLimit.length <= 3 && !isNaN(this.MaxLimit)) {
+      if (
+        button == "{enter}" &&
+        this.MaxLimit.length <= 3 &&
+        !isNaN(this.MaxLimit)
+      ) {
         this.showkeyboardMax = false;
       }
       if (button == "{enter}" && isNaN(this.MaxLimit)) {
         this.validNumber = true;
       }
-
     }
   },
   watch: {
-    MaxLimit: function () {
-        var number = this.MaxLimit;
+    MaxLimit: function() {
+      var number = this.MaxLimit;
 
-        localStorage.setItem('MaxLimit', number)
+      localStorage.setItem("MaxLimit", number);
 
-        if (number.length > 3) {
-            this.validNumber = true;
-        }
-        if (number.length <= 3) {
-            this.validNumber = false;
-        }
+      if (number.length > 3) {
+        this.validNumber = true;
+      }
+      if (number.length <= 3) {
+        this.validNumber = false;
+      }
     },
     emailText: function() {
-      localStorage.setItem('SavedEmail', this.emailText);
+      localStorage.setItem("SavedEmail", this.emailText);
     },
     "setting.email": function() {
       localStorage.setItem(this.model, JSON.stringify(this.setting));
@@ -363,7 +363,7 @@ export default {
 
     //get setting from local storge
     model: function() {
-      localStorage.setItem('savedSelected', this.model)
+      localStorage.setItem("savedSelected", this.model);
       this.setting = JSON.parse(localStorage.getItem(this.model));
     },
 
@@ -374,27 +374,26 @@ export default {
     }
   },
   mounted() {
-    var options     = this.options;
-    var theSetting  = this.setting;
-    var model       = this.model;
-    var enabling    = localStorage.getItem('enable')
-
+    var options = this.options;
+    var theSetting = this.setting;
+    var model = this.model;
+    var enabling = localStorage.getItem("enable");
 
     //get saved selector setting
-    if(model != null) {
-      this.setting = JSON.parse(localStorage.getItem(model))
+    if (model != null) {
+      this.setting = JSON.parse(localStorage.getItem(model));
     }
 
     //get saved max number
-    this.MaxLimit = localStorage.getItem('MaxLimit')
+    this.MaxLimit = localStorage.getItem("MaxLimit");
     //get saved eneable on/of
-    if(enabling === 'true') {
-      this.enableOn   = true;
-      this.enableOff  = false
+    if (enabling === "true") {
+      this.enableOn = true;
+      this.enableOff = false;
     }
-    if (enabling === 'false') {
-      this.enableOn   = false;
-      this.enableOff  = true
+    if (enabling === "false") {
+      this.enableOn = false;
+      this.enableOff = true;
     }
 
     //add localStorage items for firist visit
@@ -409,16 +408,16 @@ export default {
     this.$refs.input.focus();
   },
   created() {
-    window.addEventListener('keydown', (e) => {
-      if (e.key == 'Escape') {
-        if(this.hasError == false && this.validNumber == false) {
+    window.addEventListener("keydown", e => {
+      if (e.key == "Escape") {
+        if (this.hasError == false && this.validNumber == false) {
           this.closAllKeyboards();
         }
-        if(this.hasError == true) {
-          this.invalidEmail = true
+        if (this.hasError == true) {
+          this.invalidEmail = true;
         }
       }
     });
-  },
+  }
 };
 </script>
