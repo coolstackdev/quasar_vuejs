@@ -18,12 +18,12 @@
             <div class="row content-row">
               <div class="col-6 left-menu-button">
                 <button class="menu-button fontsize-8">
-                  {{ $t("MARK_CONFIG_STR") }}
+                  <i class="fa fa-map-marker" aria-hidden="true"></i> {{ $t("MARK_CONFIG_STR") }}
                 </button>
               </div>
               <div class="col-6">
                 <button class="menu-button fontsize-8">
-                  {{ $t("W_MATERIAL_STR") }}
+                  <i class="fa fa-tree" aria-hidden="true"></i> {{ $t("W_MATERIAL_STR") }}
                 </button>
               </div>
             </div>
@@ -31,12 +31,12 @@
             <div class="row content-row">
               <div class="col-6 left-menu-button">
                 <button class="menu-button fontsize-8">
-                  {{ $t("M_SENSORS_STR") }}
+                  <i class="fa fa-podcast" aria-hidden="true"></i> {{ $t("M_SENSORS_STR") }}
                 </button>
               </div>
               <div class="col-6">
                 <button class="menu-button fontsize-8">
-                  {{ $t("OPTIONS_STR") }}
+                  <i class="fa fa-wrench" aria-hidden="true"></i> {{ $t("OPTIONS_STR") }}
                 </button>
               </div>
             </div>
@@ -44,12 +44,12 @@
             <div class="row content-row">
               <div class="col-6 left-menu-button">
                 <button class="menu-button fontsize-8">
-                  {{ $t("SEN_CAL_STR") }}
+                  <i class="fa fa-tint" aria-hidden="true"></i> {{ $t("SEN_CAL_STR") }}
                 </button>
               </div>
               <div class="col-6">
                 <button class="menu-button fontsize-8">
-                  {{ $t("ALM_ALARMS_STR") }}
+                  <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{ $t("ALM_ALARMS_STR") }}
                 </button>
               </div>
             </div>
@@ -57,12 +57,12 @@
             <div class="row content-row">
               <div class="col-6 left-menu-button">
                 <button class="menu-button fontsize-8">
-                  {{ $t("M_SYSTEM_STR") }}
+                  <i class="fa fa-cogs" aria-hidden="true"></i> {{ $t("M_SYSTEM_STR") }}
                 </button>
               </div>
               <div class="col-6">
                 <button class="menu-button fontsize-8">
-                  {{ $t("REPORT_STR") }}
+                  <i class="fa fa-list-alt" aria-hidden="true"></i> {{ $t("REPORT_STR") }}
                 </button>
               </div>
             </div>
@@ -70,12 +70,12 @@
             <div class="row content-row">
               <div class="col-6 left-menu-button ">
                 <button class="menu-button fontsize-8">
-                  {{ $t("NETMASK_STR") }}
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i> {{ $t("M_VERSION_STR") }}
                 </button>
               </div>
               <div class="col-6">
                 <button class="menu-button fontsize-8">
-                  {{ $t("M_LANGUAGE_STR") }}
+                  <i class="fa fa-language" aria-hidden="true"></i> {{ $t("M_LANGUAGE_STR") }}
                 </button>
               </div>
             </div>
