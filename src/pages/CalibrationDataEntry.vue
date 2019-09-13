@@ -24,7 +24,10 @@
                 <p class="fontsize-18 row screen-row ">
                   <span class="col-2">N:</span>
                   <span class="col-4">1</span>
-                  <button class="col-4">{{ $t("CLEAR_ALL_STR") }}</button>
+                  <button class="col-4">
+                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    {{ $t("CLEAR_ALL_STR") }}
+                  </button>
                 </p>
                 <p class="fontsize-18 row screen-row ">
                   <span class="col-1">X:</span>
@@ -34,7 +37,10 @@
                   <span class="col-1">Y:</span
                   ><button class="col-3">0.0</button>
                   <span class="col-2"></span>
-                  <button class="col-4">{{ $t("W_CALCULATE_STR") }}</button>
+                  <button class="col-4">
+                    <i class="fa fa-calculator" aria-hidden="true"></i>
+                    {{ $t("W_CALCULATE_STR") }}
+                  </button>
                 </p>
               </div>
             </div>
@@ -57,11 +63,8 @@
               </div>
               <div class="col">
                 <button class="nav-button" style="float: right">
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                   {{ $t("EDIT_BTN_STR") }}
-                  <!-- <i
-                    class="fa fa-chevron-right margin-left-10"
-                    aria-hidden="true"
-                  ></i> -->
                 </button>
               </div>
             </div>

@@ -26,7 +26,10 @@
                 <p class="fontsize-18"><span>R2</span> 0.0000000</p>
               </div>
               <div class="col-5">
-                <button style="float: right;">{{ $t("AH_UPDATE_STR") }}</button>
+                <button style="float: right;">
+                  <i class="fa fa-repeat" aria-hidden="true"></i>
+                  {{ $t("AH_UPDATE_STR") }}
+                </button>
               </div>
               <div class="col-1"></div>
             </div>

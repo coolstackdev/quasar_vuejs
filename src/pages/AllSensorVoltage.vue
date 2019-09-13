@@ -12,6 +12,7 @@
               </div>
               <div class="col">
                 <p class="fontsize-18">
+                  <i class="fa fa-bolt" aria-hidden="true"></i>
                   {{ $t("SEN_VOLT_STR") }}
                 </p>
               </div>
@@ -20,6 +21,7 @@
             <div class="row">
               <div class="col">
                 <button class="nav-button fontsize-12" style="float: right">
+                  <i class="fa fa-balance-scale" aria-hidden="true"></i>
                   {{ $t("SEN_ZERO_STR") }}
                 </button>
               </div>
