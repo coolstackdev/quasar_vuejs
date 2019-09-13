@@ -21,7 +21,7 @@
                   :value="info.password"
                   class="inputbox fontsize-14"
                   @input="onInputChangePassword"
-                  ref="input"
+                  ref="pass"
                   type="password"
                   @keyup.esc="closeKeyboard()"
                   @focus="
@@ -34,11 +34,9 @@
               </div>
               <div class="keyboard-container">
                 <span
-                  class="closeKeyboard"
-                  @click="closeKeyboard()"
-                  v-if="showkeyboardPassword == true"
-                  >X</span
-                >
+                class="closeKeyboard" @click="closeKeyboard()"
+                v-if="showkeyboardPassword == true"
+                >X</span>
                 <SimpleKeyboard
                   style="background-color:#FFF;"
                   @onChange="onChangePassword"
@@ -68,7 +66,6 @@
                   :value="info.oldPassword"
                   class="inputbox fontsize-14"
                   @input="onInputChangeOldPassword"
-                  ref="input"
                   type="password"
                   @keyup.esc="closeKeyboard()"
                   @focus="
@@ -84,18 +81,16 @@
                   :value="info.oldPassword"
                   class="inputbox fontsize-14"
                   @input="onInputChangeOldPassword"
-                  ref="input"
+                  ref="oldpass"
                   type="password"
                   @keyup.esc="closeKeyboard()"
                   style="background-color:#FFF"
                   v-if="showkeyboardOldPassword == true"
                 />
                 <span
-                  class="closeKeyboard"
-                  @click="closeKeyboard()"
-                  v-if="showkeyboardOldPassword == true"
-                  >X</span
-                >
+                class="closeKeyboard" @click="closeKeyboard()"
+                v-if="showkeyboardOldPassword == true"
+                >X</span>
                 <SimpleKeyboard
                   style="background-color:#FFF;"
                   @onChange="onChangeOldPassword"
@@ -118,7 +113,6 @@
                   :value="info.newPassword"
                   class="inputbox fontsize-14"
                   @input="onInputChangeNewPassword"
-                  ref="input"
                   type="password"
                   @keyup.esc="closeKeyboard()"
                   @focus="
@@ -136,16 +130,14 @@
                   class="inputbox fontsize-14"
                   @input="onInputChangeNewPassword"
                   @keyup.esc="closeKeyboard()"
-                  ref="input"
+                  ref="newpass"
                   type="password"
                   style="background-color:#FFF"
                 />
                 <span
-                  class="closeKeyboard"
-                  @click="closeKeyboard()"
-                  v-if="showkeyboardNewPassword == true"
-                  >X</span
-                >
+                class="closeKeyboard" @click="closeKeyboard()"
+                v-if="showkeyboardNewPassword == true"
+                >X</span>
                 <SimpleKeyboard
                   style="background-color:#FFF;"
                   @onChange="onChangeNewPassword"
@@ -167,7 +159,7 @@
                   :value="info.confirmNew"
                   class="inputbox fontsize-14"
                   @input="onInputChangeconfirmNew"
-                  ref="input"
+
                   type="password"
                   @keyup.esc="closeKeyboard()"
                   @focus="
@@ -183,18 +175,16 @@
                   :value="info.confirmNew"
                   class="inputbox fontsize-14"
                   @input="onInputChangeconfirmNew"
-                  ref="input"
+                  ref="confirmpass"
                   type="password"
                   style="background-color:#FFF"
                   @keyup.esc="closeKeyboard()"
                   v-if="showkeyboardconfirmNew == true"
                 />
                 <span
-                  class="closeKeyboard"
-                  @click="closeKeyboard()"
-                  v-if="showkeyboardconfirmNew == true"
-                  >X</span
-                >
+                class="closeKeyboard" @click="closeKeyboard()"
+                v-if="showkeyboardconfirmNew == true"
+                >X</span>
                 <SimpleKeyboard
                   style="background-color:#FFF;"
                   @onChange="onChangeconfirmNew"
@@ -261,10 +251,10 @@ export default {
   },
   methods: {
     closeKeyboard() {
-      (this.showkeyboardPassword = false),
-        (this.showkeyboardOldPassword = false),
-        (this.showkeyboardNewPassword = false),
-        (this.showkeyboardconfirmNew = false);
+      this.showkeyboardPassword = false,
+      this.showkeyboardOldPassword = false,
+      this.showkeyboardNewPassword = false,
+      this.showkeyboardconfirmNew = false
     },
     home() {
       this.$router.push({ path: "/" });
@@ -297,35 +287,39 @@ export default {
 
     onKeyPress(button) {
       console.log("button", button);
+      this.$refs.pass.focus();
       if (button == "{enter}") {
         this.showkeyboardPassword = false;
       }
     },
     onKeyPressOldPassword(button) {
       console.log("button", button);
+      this.$refs.oldpass.focus();
       if (button == "{enter}") {
         this.showkeyboardOldPassword = false;
       }
     },
     onKeyPressNewPassword(button) {
       console.log("button", button);
+      this.$refs.oldpass.focus();
       if (button == "{enter}") {
         this.showkeyboardNewPassword = false;
       }
     },
     onKeyPressconfirmNew(button) {
       console.log("button", button);
+      this.$refs.confirmpass.focus();
       if (button == "{enter}") {
         this.showkeyboardconfirmNew = false;
       }
     }
   },
   created() {
-    window.addEventListener("keydown", e => {
-      if (e.key == "Escape") {
-        this.closeKeyboard();
+    window.addEventListener('keydown', (e) => {
+      if (e.key == 'Escape') {
+        this.closeKeyboard()
       }
     });
-  }
+  },
 };
 </script>

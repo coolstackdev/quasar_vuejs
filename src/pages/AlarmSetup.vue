@@ -24,6 +24,7 @@
                   color="teal"
                   filled
                   v-model="model"
+
                   :options="options"
                 >
                 </q-select>
@@ -79,9 +80,9 @@
                 <input
                   type="text"
                   class="inputbox fontsize-8"
-                  v-model="MaxLimit"
+                  v-model="setting.maxvalue"
                   @input="onInputChangeMax"
-                  ref="input"
+
                   @focus="showkeyboardMax = true"
                   @keyup.esc="closAllKeyboards()"
                 />
@@ -90,44 +91,44 @@
                   <input
                     type="text"
                     class="inputbox fontsize-8"
-                    v-model="MaxLimit"
+                    v-model="setting.maxvalue"
                     @input="onInputChangeMax"
-                    ref="input"
+                    ref="num"
                     v-if="showkeyboardMax == true"
                     style="background-color:#FFF"
-                    :class="{ error: validNumber }"
+                    :class="{error: validNumber}"
                     @keyup.esc="closAllKeyboards()"
                   />
-                  <span v-if="validNumber == true" class="invalidemail"
+                  <span
+                    v-if="validNumber == true"
+                    class="invalidemail"
                     >Write Number 1~999</span
                   >
                   <SimpleKeyboard
                     style="background-color:#FFF;"
                     @onChange="onChangeMax"
                     @onKeyPress="onKeyPressMax"
-                    :input="MaxLimit"
+                    :input="setting.maxvalue"
                     class="item"
                     v-if="showkeyboardMax == true"
                   />
                 </div>
               </div>
-              <div
-                class="col-5 fontsize-12"
-                style="padding-top:5px; padding-left:10px"
-              >
+              <div class="col-5 fontsize-12" style="padding-top:5px; padding-left:10px">
                 {{ $t("SAM_MAX_STR") }}&nbsp;#
               </div>
               <div class="col-6 fontsize-12" @click="enableButton()">
                 <button class="fontsize-8" style="width:50px">
-                  <span v-if="enableOn == true">
+                  <span v-if="setting.enable == true">
                     {{ $t("TGL_ON_STR") }}
                   </span>
-                  <span v-if="enableOff == true">
+                  <span v-if="setting.enable == false">
                     {{ $t("TGL_OFF_STR") }}
                   </span>
                 </button>
                 {{ $t("ENABLE_STR") }}
               </div>
+
             </div>
 
             <div class="row screen-row">
@@ -140,10 +141,41 @@
                   class="inputbox fontsize-12"
                   v-model="emailText"
                   @input="onInputChange"
-                  ref="input"
+
                   :class="{ error: hasError }"
                   @keyup.enter="enterPressed()"
                   @focus="showkeyboard = true"
+                />
+              </div>
+              <div class="keyboard-container">
+                <input
+                  style="background-color:#FFF"
+                  type="email"
+                  class="inputbox fontsize-12"
+                  placeholder="Email"
+                  :value="input"
+                  @input="onInputChange"
+                  ref="input"
+                  :class="{ error: hasError }"
+                  @keyup.enter="enterPressed()"
+                  v-if="showkeyboard == true"
+                />
+                <span
+                  v-if="invalidEmail == true && hasError == true"
+                  class="invalidemail"
+                  >Invalid Email</span
+                >
+                <!-- <span
+                class="closeKeyboard" @click="closeKeyboard()"
+                v-if="showkeyboard == true"
+                >X</span> -->
+                <SimpleKeyboard
+                  style="background-color:#FFF;"
+                  @onChange="onChange"
+                  @onKeyPress="onKeyPress"
+                  :input="input"
+                  class="item"
+                  v-if="showkeyboard == true"
                 />
               </div>
             </div>
@@ -165,37 +197,7 @@
               </div>
               <div class="col"></div>
             </div>
-            <div class="keyboard-container">
-              <input
-                style="background-color:#FFF"
-                type="email"
-                class="inputbox fontsize-12"
-                placeholder="Email"
-                :value="input"
-                @input="onInputChange"
-                ref="input"
-                :class="{ error: hasError }"
-                @keyup.enter="enterPressed()"
-                v-if="showkeyboard == true"
-              />
-              <span
-                v-if="invalidEmail == true && hasError == true"
-                class="invalidemail"
-                >Invalid Email</span
-              >
-              <!-- <span
-              class="closeKeyboard" @click="closeKeyboard()"
-              v-if="showkeyboard == true"
-              >X</span> -->
-              <SimpleKeyboard
-                style="background-color:#FFF;"
-                @onChange="onChange"
-                @onKeyPress="onKeyPress"
-                :input="input"
-                class="item"
-                v-if="showkeyboard == true"
-              />
-            </div>
+
           </div>
         </div>
       </div>
@@ -214,22 +216,23 @@ export default {
     return {
       input: "",
       error: "",
-      MaxLimit: "",
       enableOff: false,
-      enableOn: true,
+
       validNumber: false,
       hasError: false,
       invalidEmail: false,
       showkeyboard: true,
       showkeyboardMax: false,
-      model: localStorage.getItem("savedSelected"),
-      emailText: localStorage.getItem("SavedEmail"),
+      model: localStorage.getItem('savedSelected'),
+      emailText: localStorage.getItem('SavedEmail'),
       setting: {
         alarm1: false,
         alarm2: false,
         out1: false,
         out2: false,
-        email: false
+        email: false,
+        maxvalue:'',
+        enable:false,
       },
 
       options: [
@@ -247,18 +250,19 @@ export default {
     //   this.showkeyboard = false
     // },
     closAllKeyboards() {
-      if (this.hasError == false && this.validNumber == false) {
-        (this.showkeyboard = false), (this.showkeyboardMax = false);
+      if(this.hasError == false && this.validNumber == false) {
+        this.showkeyboard = false,
+        this.showkeyboardMax = false
       }
     },
     enableButton() {
-      this.enableOff = !this.enableOff;
-      this.enableOn = !this.enableOn;
-      if (this.enableOn == true) {
-        localStorage.setItem("enable", true);
+      this.setting.enable = !this.setting.enable
+
+      if(this.enableOn == true) {
+        localStorage.setItem('enable', true)
       }
-      if (this.enableOn == false) {
-        localStorage.setItem("enable", false);
+      if(this.enableOn == false) {
+        localStorage.setItem('enable', false)
       }
     },
     home() {
@@ -276,6 +280,7 @@ export default {
       this.input = input;
       if (this.isEmail(input) === false) {
         this.hasError = true;
+        this.invalidEmail = true;
       } else {
         this.hasError = false;
       }
@@ -284,7 +289,7 @@ export default {
       }
     },
     onChangeMax(input) {
-      this.MaxLimit = input;
+      this.setting.maxvalue = input;
     },
     onInputChange(input) {
       this.input = input.target.value;
@@ -297,8 +302,8 @@ export default {
         this.error = false;
       }
     },
-    onInputChangeMax(MaxLimit) {
-      this.MaxLimit = MaxLimit.target.value;
+    onInputChangeMax(input) {
+      this.setting.maxvalue = input.target.value;
     },
     onKeyPress(button) {
       console.log("button", button);
@@ -314,33 +319,33 @@ export default {
     },
     onKeyPressMax(button) {
       console.log("button", button);
-      if (
-        button == "{enter}" &&
-        this.MaxLimit.length <= 3 &&
-        !isNaN(this.MaxLimit)
-      ) {
+      if (button == "{enter}" && this.setting.maxvalue.length <= 3 && !isNaN(this.setting.maxvalue)) {
         this.showkeyboardMax = false;
+        this.validNumber = false;
       }
-      if (button == "{enter}" && isNaN(this.MaxLimit)) {
+      if (button == "{enter}" && isNaN(this.setting.maxvalue)) {
         this.validNumber = true;
       }
+
     }
   },
   watch: {
-    MaxLimit: function() {
-      var number = this.MaxLimit;
-
-      localStorage.setItem("MaxLimit", number);
-
-      if (number.length > 3) {
-        this.validNumber = true;
+    'setting.enable': function () {
+      localStorage.setItem(this.model, JSON.stringify(this.setting));
+    },
+    'setting.maxvalue': function () {
+      var number = this.setting.maxvalue
+      this.$refs.num.focus();
+      if (isNaN(number)) {
+        this.validNumber = true
       }
-      if (number.length <= 3) {
-        this.validNumber = false;
+      if (!isNaN(number)) {
+        this.validNumber = false
       }
+      localStorage.setItem(this.model, JSON.stringify(this.setting));
     },
     emailText: function() {
-      localStorage.setItem("SavedEmail", this.emailText);
+      localStorage.setItem('SavedEmail', this.emailText);
     },
     "setting.email": function() {
       localStorage.setItem(this.model, JSON.stringify(this.setting));
@@ -357,13 +362,10 @@ export default {
     "setting.alarm1": function() {
       localStorage.setItem(this.model, JSON.stringify(this.setting));
     },
-    "setting.emailText": function() {
-      localStorage.setItem(this.model, JSON.stringify(this.setting));
-    },
 
     //get setting from local storge
     model: function() {
-      localStorage.setItem("savedSelected", this.model);
+      localStorage.setItem('savedSelected', this.model)
       this.setting = JSON.parse(localStorage.getItem(this.model));
     },
 
@@ -374,27 +376,29 @@ export default {
     }
   },
   mounted() {
-    var options = this.options;
-    var theSetting = this.setting;
-    var model = this.model;
-    var enabling = localStorage.getItem("enable");
+    var options     = this.options;
+    var theSetting  = this.setting;
+    var model       = this.model;
+    // var enabling    = localStorage.getItem('enable')
+
 
     //get saved selector setting
-    if (model != null) {
-      this.setting = JSON.parse(localStorage.getItem(model));
+    if(model != null) {
+      this.setting = JSON.parse(localStorage.getItem(model))
     }
 
-    //get saved max number
-    this.MaxLimit = localStorage.getItem("MaxLimit");
+    // //get saved max number
+    // this.MaxLimit = localStorage.getItem('MaxLimit')
+
     //get saved eneable on/of
-    if (enabling === "true") {
-      this.enableOn = true;
-      this.enableOff = false;
-    }
-    if (enabling === "false") {
-      this.enableOn = false;
-      this.enableOff = true;
-    }
+    // if(enabling === 'true') {
+    //   this.enableOn   = true;
+    //   this.enableOff  = false
+    // }
+    // if (enabling === 'false') {
+    //   this.enableOn   = false;
+    //   this.enableOff  = true
+    // }
 
     //add localStorage items for firist visit
     for (var i = 0; i <= 6; i++) {
@@ -408,16 +412,16 @@ export default {
     this.$refs.input.focus();
   },
   created() {
-    window.addEventListener("keydown", e => {
-      if (e.key == "Escape") {
-        if (this.hasError == false && this.validNumber == false) {
+    window.addEventListener('keydown', (e) => {
+      if (e.key == 'Escape') {
+        if(this.hasError == false && this.validNumber == false) {
           this.closAllKeyboards();
         }
-        if (this.hasError == true) {
-          this.invalidEmail = true;
+        if(this.hasError == true) {
+          this.invalidEmail = true
         }
       }
     });
-  }
+  },
 };
 </script>

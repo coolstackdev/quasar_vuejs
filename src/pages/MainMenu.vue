@@ -5,14 +5,15 @@
         <div class="content">
           <div class="q-pa-md" style="padding:10px">
             <div class="row content-row">
-              <div class="col-4"></div>
-              <div class="col-8">
+              <div class="col-2"></div>
+              <div class="col-8 text-center">
                 <button class="clear">
                   <p class="fontsize-18">
                     {{ $t("MAIN_MENU_STR") }}
                   </p>
                 </button>
               </div>
+              <div class="col-2"></div>
             </div>
 
             <div class="row content-row">
@@ -84,7 +85,7 @@
               <div class="col"></div>
               <div class="col" style="display: flex; justify-content: center;">
                 <button class="nav-button" @click="home">
-                  <!-- <i class="fa fa-home margin-right-10" aria-hidden="true"></i> -->
+                  <i class="fa fa-home margin-right-10" aria-hidden="true"></i>
                   {{ $t("W_HOME_STR") }}
                 </button>
               </div>

@@ -33,7 +33,7 @@
             </div>
           </div>
 
-          <div class="row container-left-right">
+          <div class="row">
             <div class="col">
               <button class="nav-button">
                 <i
