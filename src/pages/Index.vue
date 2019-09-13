@@ -25,13 +25,7 @@
             <div class="row">
               <div style="text-align: center; width: 100%;">
                 <button class="blue dash fontsize-16">
-                  <a
-                    ><i
-                      class="fa fa-tint"
-                      aria-hidden="true"
-                      style="margin-right: 12px"
-                    ></i
-                  ></a>
+                  <a href="#"><i class="fa fa-tint" aria-hidden="true" style="margin-right: 12px"></i></a>
                   <a id="amcid">00.0 %</a>
                 </button>
                 <p class="fontsize-16" style="margin-top: 5px;">
