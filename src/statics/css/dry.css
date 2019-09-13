@@ -97,8 +97,8 @@ body {
 .q-pa-md .nav-bar {
   position: absolute;
   bottom: 10px;
-  left: 10px;
-  right: 10px;
+  left:0;
+  right: 0;
 }
 .error-text {
   line-height: 1;
