@@ -43,7 +43,7 @@ const routes = [
         component: () => import("pages/CalibrationDataEditor.vue")
       },
       {
-        path: "clibrationentry",
+        path: "calibrationentry",
         component: () => import("pages/CalibrationDataEntry.vue")
       },
       {
