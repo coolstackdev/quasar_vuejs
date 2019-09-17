@@ -145,5 +145,11 @@ $(document).ready(function () {
          }
      }
 
+     window.addEventListener('touchstart', function () {
+         if (!document.fullscreenElement) {
+            openFullScreen();
+         }
+     });
+
      setInterval(requestData, 1000);
 });
