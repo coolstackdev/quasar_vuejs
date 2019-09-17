@@ -39,7 +39,7 @@ var response = {
 
 function requestData() {
   $.ajax({
-    url: "http://192.168.0.10/server-data.php",
+    url: "http://192.168.0.23/server-data.php",
     data: {
       cc_pieces: response.cc_pieces,
       cc_first: response.cc_first,
@@ -128,21 +128,22 @@ function requestData() {
       }
       // chart.series[0].setData(eval("[ "+point1.x1+","+point1.x2+","+point1.x3+" ]"),true);
     },
-    complete: function() {
+    complete: function () {
+      //console.log(document.getElementById("amcid"));
       //setTimeout(requestData, 1000);
     },
     cache: false
   });
 }
 
-// $(document).ready(function () {
-//     var fullscreen = document.getElementById("fullscreen");
+$(document).ready(function () {
+     var fullscreen = document.getElementById("fullscreen");
 
-//     fullscreen.onclick = function () {
-//         if (!document.fullscreenElement) {
-//             openFullScreen();
-//         }
-//     }
+     fullscreen.onclick = function () {
+         if (!document.fullscreenElement) {
+             openFullScreen();
+         }
+     }
 
-//     setInterval(requestData, 1000);
-// });
+     setInterval(requestData, 1000);
+});
