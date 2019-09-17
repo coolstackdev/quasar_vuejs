@@ -129,27 +129,30 @@ function requestData() {
       // chart.series[0].setData(eval("[ "+point1.x1+","+point1.x2+","+point1.x3+" ]"),true);
     },
     complete: function () {
-      //console.log(document.getElementById("amcid"));
-      //setTimeout(requestData, 1000);
+      window.setTimeout(function () { requestData(); }, 1000);
     },
     cache: false
   });
 }
 
+
 $(document).ready(function () {
-     var fullscreen = document.getElementById("fullscreen");
+  requestData();
+  /*
+  var fullscreen = document.getElementById("fullscreen");
 
-     fullscreen.onclick = function () {
-         if (!document.fullscreenElement) {
-             openFullScreen();
-         }
-     }
+  fullscreen.onclick = function () {
+      if (!document.fullscreenElement) {
+          openFullScreen();
+      }
+  }
 
-     window.addEventListener('touchstart', function () {
-         if (!document.fullscreenElement) {
-            openFullScreen();
-         }
-     });
-
-     setInterval(requestData, 1000);
+  window.addEventListener('touchstart', function () {
+      if (!document.fullscreenElement) {
+        openFullScreen();
+      }
+  });
+  */
+  //window.setInterval(function () { requestData(); }, 1000);
 });
+
