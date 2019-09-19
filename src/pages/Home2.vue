@@ -11,7 +11,7 @@
               <div class="col-8">
                 <button class="clear">
                   <p class="fontsize-18">
-                    {{ $t("MATERIAL_STR") }}
+                    <span @click="material">{{ $t("MATERIAL_STR") }}</span>
                     {{ $t("EMPTY_STR") }}
                   </p>
                   <!-- <i class="fa fa-pencil margin-left-10" aria-hidden="true"></i> -->
@@ -39,9 +39,7 @@
                   </button>
                 </div>
                 <p class="fontsize-12">
-                  {{
-                    $t("MARKH2_STR")
-                  }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <span @click="markers">{{ $t("MARKH2_STR") }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </p>
               </div>
             </div>
@@ -68,6 +66,13 @@
         next: "/home3",
       }
     },
-    methods: {}
+    methods: {
+      material() {
+        this.$router.push({ path: '/material' });
+      },
+      markers() {
+        this.$router.push({ path: '/markers' });
+      },
+    }
   };
 </script>

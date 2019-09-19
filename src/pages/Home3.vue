@@ -67,7 +67,7 @@ export default {
   },
   data() {
     return {
-      next: "/goes-to-report",
+      next: "/report",
       options: {
         chart: {
           id: "vuechart-example",

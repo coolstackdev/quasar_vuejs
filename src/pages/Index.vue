@@ -25,7 +25,7 @@
                   <a href="#"><i class="fa fa-tint" aria-hidden="true" style="margin-right: 12px"></i></a>
                   <a id="amcid" @click="allvolt">00.0 %</a>
                 </button>
-                <p class="fontsize-16" style="margin-top: 5px;">
+                <p class="fontsize-16" style="margin-top: 5px;" @click="markers">
                   {{ $t("MARKH2_STR") }}
                 </p>
                 <p class="fontsize-10" style="margin-top: 5px;">
@@ -67,6 +67,9 @@
       },
       allvolt() {
         this.$router.push({ path: '/allvolt' });
+      },
+      markers() {
+        this.$router.push({ path: '/markers' });
       },
     },
   };
