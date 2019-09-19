@@ -6,10 +6,7 @@
           <div class="q-pa-md">
             <div class="row">
               <div class="col-4">
-                <button class="alert">
-                  <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-                  {{ $t("ALARMS_STR") }}
-                </button>
+                <AlarmButton />
               </div>
               <div class="col-8">
                 <button class="clear">
@@ -48,32 +45,8 @@
                 </p>
               </div>
             </div>
-            <div class="row container-left-right nav-bar">
-              <div class="col">
-                <button class="nav-button">
-                  <i
-                    class="fa fa-chevron-left margin-right-10"
-                    aria-hidden="true"
-                  ></i>
-                  {{ $t("PREV_STR") }}
-                </button>
-              </div>
-              <div class="col" style="display: flex; justify-content: center;">
-                <button class="nav-button" @click="mainmenu">
-                  <i class="fa fa-bars margin-right-10" aria-hidden="true"></i>
-                  {{ $t("MENU_STR") }}
-                </button>
-              </div>
-              <div class="col">
-                <button class="nav-button" style="float: right">
-                  {{ $t("NEXT_STR") }}
-                  <i
-                    class="fa fa-chevron-right margin-left-10"
-                    aria-hidden="true"
-                  ></i>
-                </button>
-              </div>
-            </div>
+
+            <NavigationBar v-bind:next="next" />
           </div>
         </div>
       </div>
@@ -82,12 +55,19 @@
 </template>
 
 <script>
-export default {
-  name: "Home2",
-  methods: {
-    mainmenu() {
-      this.$router.push({ path: "/main" });
-    }
-  }
-};
+  import AlarmButton from "../components/AlarmButton";
+  import NavigationBar from "../components/NavigationBar";
+  export default {
+    name: "Home2",
+    components: {
+      AlarmButton,
+      NavigationBar,
+    },
+    data: function () {
+      return {
+        next: "/home3",
+      }
+    },
+    methods: {}
+  };
 </script>
