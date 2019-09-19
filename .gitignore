@@ -1,6 +1,7 @@
 .quasar
 .DS_Store
 .thumbs.db
+*.stackdump
 
 node_modules
 
