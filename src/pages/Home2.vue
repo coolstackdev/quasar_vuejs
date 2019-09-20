@@ -29,7 +29,13 @@
                 <div class="row">
                   <div class="col-5"></div>
                   <button class="dash col-2">
-                    <a href="#"><i class="fa fa-tint" aria-hidden="true" style="margin-right: 12px"></i></a>
+                    <a href="#"
+                      ><i
+                        class="fa fa-tint"
+                        aria-hidden="true"
+                        style="margin-right: 12px"
+                      ></i
+                    ></a>
                     <a id="avgavgid" style="color: black">00.0 %</a>
                   </button>
                 </div>
@@ -37,7 +43,13 @@
                 <div class="row">
                   <div class="col-5"></div>
                   <button class="dash col-2">
-                    <a href="#"><i class="fa fa-tint" aria-hidden="true" style="margin-right: 12px"></i></a>
+                    <a href="#"
+                      ><i
+                        class="fa fa-tint"
+                        aria-hidden="true"
+                        style="margin-right: 12px"
+                      ></i
+                    ></a>
                     <a id="peakavgid" style="color: black">00.0 %</a>
                   </button>
                 </div>

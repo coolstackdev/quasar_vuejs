@@ -21,7 +21,9 @@
                 <input
                   type="text"
                   class="inputbox fontsize-14"
-                  value="emacinc.com"
+                  v-model="dns.search"
+                  @focus="showKeyboard('search')"
+                  @keyup.esc="closeKeyboards()"
                 />
               </div>
             </div>
@@ -34,7 +36,9 @@
                 <input
                   type="text"
                   class="inputbox fontsize-14"
-                  value="10.0.2.1"
+                  v-model="dns.pri_dns"
+                  @focus="showKeyboard('pri_dns')"
+                  @keyup.esc="closeKeyboards()"
                 />
               </div>
               <div class="col-2"></div>
@@ -45,7 +49,9 @@
                 <input
                   type="text"
                   class="inputbox fontsize-14"
-                  value="0.0.0.0"
+                  v-model="dns.alt_dns"
+                  @focus="showKeyboard('alt_dns')"
+                  @keyup.esc="closeKeyboards()"
                 />
               </div>
             </div>
@@ -57,7 +63,13 @@
                 <p class="fontsize-14">{{ $t("SERVER_STR") }}</p>
               </div>
               <div class="col-7">
-                <input type="text" class="inputbox fontsize-14" />
+                <input
+                  type="text"
+                  class="inputbox fontsize-14"
+                  v-model="dns.email_server"
+                  @focus="showKeyboard('email_server')"
+                  @keyup.esc="closeKeyboards()"
+                />
               </div>
             </div>
 
@@ -70,14 +82,16 @@
                 <input
                   type="text"
                   class="inputbox fontsize-14"
-                  value="apex@wanger.net"
+                  v-model="dns.from"
+                  @focus="showKeyboard('from')"
+                  @keyup.esc="closeKeyboards()"
                 />
               </div>
             </div>
 
             <div class="row container-left-right nav-bar">
               <div class="col">
-                <button class="nav-button">
+                <button @click="$router.go(-1)" class="nav-button">
                   <i
                     class="fa fa-chevron-left margin-right-10"
                     aria-hidden="true"
@@ -86,7 +100,7 @@
                 </button>
               </div>
               <div class="col" style="display: flex; justify-content: center;">
-                <button class="nav-button">
+                <button @click="$router.push('/')" class="nav-button">
                   <i class="fa fa-home margin-right-10" aria-hidden="true"></i>
                   {{ $t("W_HOME_STR") }}
                 </button>
@@ -101,9 +115,205 @@
                 </button>
               </div>
             </div>
+
+            <!-- keyboard -->
+            <div class="keyboard-container">
+              <input
+                type="text"
+                class="inputbox fontsize-8"
+                v-model="keyboardInput"
+                v-if="isShowKeyboard"
+                style="background-color:#FFF"
+                :class="{ error: hasError }"
+                @keyup.esc="closeKeyboards()"
+              />
+              <span v-if="hasError" class="invalid">{{ errorMsg }}</span>
+              <SimpleKeyboard
+                v-if="isShowKeyboard"
+                style="background-color:#FFF;"
+                :input="keyboardInput"
+                @onChange="onChangeKeyboard"
+                @onKeyPress="onKeyPressKeyboard"
+                class="item"
+              />
+            </div>
           </div>
         </div>
       </div>
     </q-page>
   </div>
 </template>
+<script>
+import SimpleKeyboard from "../components/SimpleKeyboard";
+export default {
+  name: "DNSSetup",
+  components: {
+    SimpleKeyboard
+  },
+
+  data() {
+    return {
+      errorMsg: "",
+      hasError: false,
+      isShowKeyboard: false,
+      keyboardInput: "",
+      currentKeyword: "",
+      input: "",
+
+      dns: {
+        search: "emacinc.com",
+        pri_dns: "10.0.2.1",
+        alt_dns: "0.0.0.1",
+        email_server: "",
+        from: "apen@wagner.net"
+      }
+    };
+  },
+  methods: {
+    // show & hide keyboard
+    showKeyboard(keyword) {
+      switch (keyword) {
+        case "search":
+          this.keyboardInput = this.dns.search;
+          break;
+        case "pri_dns":
+          this.keyboardInput = this.dns.pri_dns;
+          break;
+        case "alt_dns":
+          this.keyboardInput = this.dns.alt_dns;
+          break;
+        case "email_server":
+          this.keyboardInput = this.dns.email_server;
+          break;
+        case "from":
+          this.keyboardInput = this.dns.from;
+          break;
+
+        default:
+          break;
+      }
+
+      this.isShowKeyboard = true;
+      this.currentKeyword = keyword;
+    },
+    closeKeyboards() {
+      if (!this.hasError) {
+        this.isShowKeyboard = false;
+        this.keyboardInput = "";
+      }
+    },
+
+    // validation methods
+    checkValidation() {
+      let validationResult = false;
+      let emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{1,24}))$/;
+      let ipAddressRegex = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/g;
+      let requiredRegex = /[a-zA-Z0-9-,]+/g;
+
+      switch (this.currentKeyword) {
+        case "search":
+          validationResult = this.keyboardInput.match(requiredRegex)
+            ? true
+            : false;
+          this.errorMsg = "This is a required field";
+          break;
+        case "pri_dns":
+          validationResult = this.keyboardInput.match(ipAddressRegex)
+            ? true
+            : false;
+          this.errorMsg = "Invalid IP address";
+          break;
+        case "alt_dns":
+          validationResult = this.keyboardInput.match(ipAddressRegex)
+            ? true
+            : false;
+          this.errorMsg = "Invalid IP address";
+          break;
+        case "email_server":
+          validationResult = this.keyboardInput.match(requiredRegex)
+            ? true
+            : false;
+          this.errorMsg = "This is a required field";
+          break;
+        case "from":
+          validationResult = this.keyboardInput.match(emailRegex)
+            ? true
+            : false;
+          this.errorMsg = "Invalid Email";
+          break;
+
+        default:
+          break;
+      }
+
+      return validationResult;
+    },
+
+    // keyboard event handler
+    onChangeKeyboard(input) {
+      this.keyboardInput = input;
+
+      switch (this.currentKeyword) {
+        case "search":
+          this.dns.search = input;
+          break;
+        case "pri_dns":
+          this.dns.pri_dns = input;
+          break;
+        case "alt_dns":
+          this.dns.alt_dns = input;
+          break;
+        case "email_server":
+          this.dns.email_server = input;
+          break;
+        case "from":
+          this.dns.from = input;
+          break;
+
+        default:
+          break;
+      }
+
+      // check validation realtime
+      if (this.checkValidation()) {
+        this.hasError = false;
+      } else {
+        this.hasError = true;
+      }
+    },
+    onKeyPressKeyboard(button) {
+      if (button == "{enter}") {
+        if (this.checkValidation()) {
+          this.hasError = false;
+          this.isShowKeyboard = false;
+        } else {
+          this.hasError = true;
+        }
+      } else if (button == "{bksp}") {
+        console.log("backspace");
+      }
+    }
+  },
+  mounted() {},
+  created() {
+    window.addEventListener("keydown", e => {
+      if (e.key == "Escape") {
+        if (!this.hasError) {
+          this.closeKeyboards();
+        }
+      }
+    });
+  }
+};
+</script>
+<style scoped>
+.invalid {
+  display: block;
+  margin: 0;
+  background-color: red;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  bottom: -5px;
+}
+</style>

@@ -34,9 +34,11 @@
               </div>
               <div class="keyboard-container">
                 <span
-                class="closeKeyboard" @click="closeKeyboard()"
-                v-if="showkeyboardPassword == true"
-                >X</span>
+                  class="closeKeyboard"
+                  @click="closeKeyboard()"
+                  v-if="showkeyboardPassword == true"
+                  >X</span
+                >
                 <SimpleKeyboard
                   style="background-color:#FFF;"
                   @onChange="onChangePassword"
@@ -88,9 +90,11 @@
                   v-if="showkeyboardOldPassword == true"
                 />
                 <span
-                class="closeKeyboard" @click="closeKeyboard()"
-                v-if="showkeyboardOldPassword == true"
-                >X</span>
+                  class="closeKeyboard"
+                  @click="closeKeyboard()"
+                  v-if="showkeyboardOldPassword == true"
+                  >X</span
+                >
                 <SimpleKeyboard
                   style="background-color:#FFF;"
                   @onChange="onChangeOldPassword"
@@ -135,9 +139,11 @@
                   style="background-color:#FFF"
                 />
                 <span
-                class="closeKeyboard" @click="closeKeyboard()"
-                v-if="showkeyboardNewPassword == true"
-                >X</span>
+                  class="closeKeyboard"
+                  @click="closeKeyboard()"
+                  v-if="showkeyboardNewPassword == true"
+                  >X</span
+                >
                 <SimpleKeyboard
                   style="background-color:#FFF;"
                   @onChange="onChangeNewPassword"
@@ -159,7 +165,6 @@
                   :value="info.confirmNew"
                   class="inputbox fontsize-14"
                   @input="onInputChangeconfirmNew"
-
                   type="password"
                   @keyup.esc="closeKeyboard()"
                   @focus="
@@ -182,9 +187,11 @@
                   v-if="showkeyboardconfirmNew == true"
                 />
                 <span
-                class="closeKeyboard" @click="closeKeyboard()"
-                v-if="showkeyboardconfirmNew == true"
-                >X</span>
+                  class="closeKeyboard"
+                  @click="closeKeyboard()"
+                  v-if="showkeyboardconfirmNew == true"
+                  >X</span
+                >
                 <SimpleKeyboard
                   style="background-color:#FFF;"
                   @onChange="onChangeconfirmNew"
@@ -251,10 +258,10 @@ export default {
   },
   methods: {
     closeKeyboard() {
-      this.showkeyboardPassword = false,
-      this.showkeyboardOldPassword = false,
-      this.showkeyboardNewPassword = false,
-      this.showkeyboardconfirmNew = false
+      (this.showkeyboardPassword = false),
+        (this.showkeyboardOldPassword = false),
+        (this.showkeyboardNewPassword = false),
+        (this.showkeyboardconfirmNew = false);
     },
     home() {
       this.$router.push({ path: "/" });
@@ -315,11 +322,11 @@ export default {
     }
   },
   created() {
-    window.addEventListener('keydown', (e) => {
-      if (e.key == 'Escape') {
-        this.closeKeyboard()
+    window.addEventListener("keydown", e => {
+      if (e.key == "Escape") {
+        this.closeKeyboard();
       }
     });
-  },
+  }
 };
 </script>
