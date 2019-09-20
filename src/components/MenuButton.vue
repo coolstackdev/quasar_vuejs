@@ -1,17 +1,17 @@
-<template>  
+<template>
   <button class="nav-button" @click="mainmenu">
     <i class="fa fa-bars margin-right-10" aria-hidden="true"></i>
     {{ $t("MENU_STR") }}
-  </button>   
+  </button>
 </template>
 
 <script>
 export default {
-    name: "MenuButton",
-    methods: {
-      mainmenu() {
-        this.$router.push({ path: "/main" });
-      },
+  name: "MenuButton",
+  methods: {
+    mainmenu() {
+      this.$router.push({ path: "/main" });
     }
+  }
 };
 </script>

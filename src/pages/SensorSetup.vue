@@ -32,7 +32,10 @@
             <div class="row content-row">
               <div class="col-6" style="border-right:5px solid #000">
                 <p class="fontsize-14">
-                  <i class="fa fa-thermometer-three-quarters" aria-hidden="true"></i>
+                  <i
+                    class="fa fa-thermometer-three-quarters"
+                    aria-hidden="true"
+                  ></i>
                   {{ $t("SAM_TEMP_STR") }} <span> 0</span>
                 </p>
                 <div class="row content-row ">

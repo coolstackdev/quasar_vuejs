@@ -16,8 +16,10 @@
               <p class="fontsize-12 min-line">{{ $t("RPT_STD_STR") }}</p>
             </div>
             <div class="col">
-              <button class="fontsize-10"
-                      style="float: right; margin-right: 10px">
+              <button
+                class="fontsize-10"
+                style="float: right; margin-right: 10px"
+              >
                 <i class="fa fa-eraser" aria-hidden="true"></i>
                 {{ $t("W_BTN_CLEAR_STR") }}
               </button>
@@ -38,15 +40,15 @@
 </template>
 
 <script>
-  import ApexCharts from "apexcharts";
-  import AlarmButton from "../components/AlarmButton";
-  import NavigationBar from "../components/NavigationBar";
+import ApexCharts from "apexcharts";
+import AlarmButton from "../components/AlarmButton";
+import NavigationBar from "../components/NavigationBar";
 export default {
   name: "Home3",
   components: {
-      AlarmButton,
-      NavigationBar,
-    },
+    AlarmButton,
+    NavigationBar
+  },
   methods: {},
   mounted() {
     var i;

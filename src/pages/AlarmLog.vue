@@ -25,8 +25,10 @@
                 </p>
               </div>
               <div class="col-4">
-                <button class="fontsize-12"
-                        style="float: right; margin-right: 10px">
+                <button
+                  class="fontsize-12"
+                  style="float: right; margin-right: 10px"
+                >
                   <i class="fa fa-refresh" aria-hidden="true"></i>
                   {{ $t("AH_UPDATE_STR") }}
                 </button>

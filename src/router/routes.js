@@ -57,6 +57,10 @@ const routes = [
       {
         path: "sensorsetup",
         component: () => import("pages/SensorSetup.vue")
+      },
+      {
+        path: "networksetting",
+        component: () => import("pages/NetworkSetting.vue")
       }
     ]
   }

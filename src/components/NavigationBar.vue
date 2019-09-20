@@ -12,21 +12,19 @@
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
 
 <script>
-  import PrevButton from "../components/PrevButton";
-  import MenuButton from "../components/MenuButton";
-  import NextButton from "../components/NextButton";
-  export default {
-    name: "NavigationBar",
-    components: {
-      PrevButton,
-      MenuButton,
-      NextButton,
-    },
-    props: ["next", ],
-  };
+import PrevButton from "../components/PrevButton";
+import MenuButton from "../components/MenuButton";
+import NextButton from "../components/NextButton";
+export default {
+  name: "NavigationBar",
+  components: {
+    PrevButton,
+    MenuButton,
+    NextButton
+  },
+  props: ["next"]
+};
 </script>

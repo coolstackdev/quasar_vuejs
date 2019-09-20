@@ -1,17 +1,17 @@
-<template>  
+<template>
   <button class="alert" @click="alarms">
     <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
     {{ $t("ALARM_STR") }}
-  </button>   
+  </button>
 </template>
 
 <script>
 export default {
-    name: "AlarmButton",
-    methods: {
-      alarms() {
-        this.$router.push({ path: "/alarms" });
-      },
+  name: "AlarmButton",
+  methods: {
+    alarms() {
+      this.$router.push({ path: "/alarms" });
     }
+  }
 };
 </script>

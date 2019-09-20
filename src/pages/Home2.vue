@@ -51,7 +51,8 @@
                   </button>
                 </div>
                 <p class="fontsize-12">
-                  <span @click="markers">{{ $t("MARKH2_STR") }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <span @click="markers">{{ $t("MARKH2_STR") }}</span
+                  >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </p>
               </div>
             </div>
@@ -65,26 +66,26 @@
 </template>
 
 <script>
-  import AlarmButton from "../components/AlarmButton";
-  import NavigationBar from "../components/NavigationBar";
-  export default {
-    name: "Home2",
-    components: {
-      AlarmButton,
-      NavigationBar,
+import AlarmButton from "../components/AlarmButton";
+import NavigationBar from "../components/NavigationBar";
+export default {
+  name: "Home2",
+  components: {
+    AlarmButton,
+    NavigationBar
+  },
+  data: function() {
+    return {
+      next: "/home3"
+    };
+  },
+  methods: {
+    material() {
+      this.$router.push({ path: "/material" });
     },
-    data: function () {
-      return {
-        next: "/home3",
-      }
-    },
-    methods: {
-      material() {
-        this.$router.push({ path: '/material' });
-      },
-      markers() {
-        this.$router.push({ path: '/markers' });
-      },
+    markers() {
+      this.$router.push({ path: "/markers" });
     }
-  };
+  }
+};
 </script>

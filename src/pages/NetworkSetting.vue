@@ -5,9 +5,9 @@
         <div class="content">
           <div class="q-pa-md">
             <div class="row screen-row">
-              <div class="col-12">
+              <div class="col-12 title">
                 <p class="fontsize-18 text-center">
-                  {{ $t("DNS_SETUP_STR") }}
+                  {{ $t("NET_SETTINGS_STR") }}
                 </p>
               </div>
             </div>
@@ -15,59 +15,14 @@
             <div class="row content-row">
               <div class="col-2"></div>
               <div class="col-3">
-                <p class="fontsize-14">{{ $t("SEARCH_STR") }}</p>
+                <p class="fontsize-14">{{ $t("IP_ADDR_STR") }}</p>
               </div>
               <div class="col-7">
                 <input
                   type="text"
                   class="custom_inputbox fontsize-14"
-                  v-model="dns.search"
-                  @focus="showKeyboard('search')"
-                  @keyup.esc="closeKeyboards()"
-                />
-              </div>
-            </div>
-            <div class="row content-row">
-              <div class="col-2"></div>
-              <div class="col-3">
-                <p class="fontsize-14">{{ $t("PRI_DNS_STR") }}</p>
-              </div>
-              <div class="col-7">
-                <input
-                  type="text"
-                  class="custom_inputbox fontsize-14"
-                  v-model="dns.pri_dns"
-                  @focus="showKeyboard('pri_dns')"
-                  @keyup.esc="closeKeyboards()"
-                />
-              </div>
-              <div class="col-2"></div>
-              <div class="col-3">
-                <p class="fontsize-14">{{ $t("ALT_DNS_STR") }}</p>
-              </div>
-              <div class="col-7">
-                <input
-                  type="text"
-                  class="custom_inputbox fontsize-14"
-                  v-model="dns.alt_dns"
-                  @focus="showKeyboard('alt_dns')"
-                  @keyup.esc="closeKeyboards()"
-                />
-              </div>
-            </div>
-            <div class="text-content"></div>
-            <div class="row content-row">
-              <div class="col-2"></div>
-              <div class="col-3">
-                <p class="fontsize-14">{{ $t("ALC_EMAIL_STR") }}</p>
-                <p class="fontsize-14">{{ $t("SERVER_STR") }}</p>
-              </div>
-              <div class="col-7">
-                <input
-                  type="text"
-                  class="custom_inputbox fontsize-14"
-                  v-model="dns.email_server"
-                  @focus="showKeyboard('email_server')"
+                  v-model="dns.ip_addr"
+                  @focus="showKeyboard('ip_addr')"
                   @keyup.esc="closeKeyboards()"
                 />
               </div>
@@ -76,14 +31,46 @@
             <div class="row content-row">
               <div class="col-2"></div>
               <div class="col-3">
-                <p class="fontsize-14">{{ $t("EMAIL_FROM_STR") }}</p>
+                <p class="fontsize-14">{{ $t("NETMASK_STR") }}</p>
               </div>
               <div class="col-7">
                 <input
                   type="text"
                   class="custom_inputbox fontsize-14"
-                  v-model="dns.from"
-                  @focus="showKeyboard('from')"
+                  v-model="dns.netmask"
+                  @focus="showKeyboard('netmask')"
+                  @keyup.esc="closeKeyboards()"
+                />
+              </div>
+            </div>
+
+            <div class="row content-row">
+              <div class="col-2"></div>
+              <div class="col-3">
+                <p class="fontsize-14">{{ $t("NET_NETWORK_STR") }}</p>
+              </div>
+              <div class="col-7">
+                <input
+                  type="text"
+                  class="custom_inputbox fontsize-14"
+                  v-model="dns.network"
+                  @focus="showKeyboard('network')"
+                  @keyup.esc="closeKeyboards()"
+                />
+              </div>
+            </div>
+
+            <div class="row content-row">
+              <div class="col-2"></div>
+              <div class="col-3">
+                <p class="fontsize-14">{{ $t("BROADCAST_STR") }}</p>
+              </div>
+              <div class="col-7">
+                <input
+                  type="text"
+                  class="custom_inputbox fontsize-14"
+                  v-model="dns.broadcast"
+                  @focus="showKeyboard('broadcast')"
                   @keyup.esc="closeKeyboards()"
                 />
               </div>
@@ -146,14 +133,14 @@
 <script>
 import SimpleKeyboard from "../components/SimpleKeyboard";
 export default {
-  name: "DNSSetup",
+  name: "NetworkSetting",
   components: {
     SimpleKeyboard
   },
 
   data() {
     return {
-      errorMsg: "",
+      errorMsg: "Invalid IP address",
       hasError: false,
       isShowKeyboard: false,
       keyboardInput: "",
@@ -161,11 +148,10 @@ export default {
       input: "",
 
       dns: {
-        search: "emacinc.com",
-        pri_dns: "10.0.2.1",
-        alt_dns: "0.0.0.1",
-        email_server: "",
-        from: "apen@wagner.net"
+        ip_addr: "192.168.0.23",
+        netmask: "255.255.254.0",
+        network: "192.168.0.0",
+        broadcast: "192.168.1.255"
       }
     };
   },
@@ -173,20 +159,17 @@ export default {
     // show & hide keyboard
     showKeyboard(keyword) {
       switch (keyword) {
-        case "search":
-          this.keyboardInput = this.dns.search;
+        case "ip_addr":
+          this.keyboardInput = this.dns.ip_addr;
           break;
-        case "pri_dns":
-          this.keyboardInput = this.dns.pri_dns;
+        case "netmask":
+          this.keyboardInput = this.dns.netmask;
           break;
-        case "alt_dns":
-          this.keyboardInput = this.dns.alt_dns;
+        case "network":
+          this.keyboardInput = this.dns.network;
           break;
-        case "email_server":
-          this.keyboardInput = this.dns.email_server;
-          break;
-        case "from":
-          this.keyboardInput = this.dns.from;
+        case "broadcast":
+          this.keyboardInput = this.dns.broadcast;
           break;
 
         default:
@@ -205,46 +188,11 @@ export default {
 
     // validation methods
     checkValidation() {
-      let validationResult = false;
-      let emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{1,24}))$/;
       let ipAddressRegex = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/g;
-      let requiredRegex = /[a-zA-Z0-9-,]+/g;
 
-      switch (this.currentKeyword) {
-        case "search":
-          validationResult = this.keyboardInput.match(requiredRegex)
-            ? true
-            : false;
-          this.errorMsg = "This is a required field";
-          break;
-        case "pri_dns":
-          validationResult = this.keyboardInput.match(ipAddressRegex)
-            ? true
-            : false;
-          this.errorMsg = "Invalid IP address";
-          break;
-        case "alt_dns":
-          validationResult = this.keyboardInput.match(ipAddressRegex)
-            ? true
-            : false;
-          this.errorMsg = "Invalid IP address";
-          break;
-        case "email_server":
-          validationResult = this.keyboardInput.match(requiredRegex)
-            ? true
-            : false;
-          this.errorMsg = "This is a required field";
-          break;
-        case "from":
-          validationResult = this.keyboardInput.match(emailRegex)
-            ? true
-            : false;
-          this.errorMsg = "Invalid Email";
-          break;
-
-        default:
-          break;
-      }
+      let validationResult = this.keyboardInput.match(ipAddressRegex)
+        ? true
+        : false;
 
       return validationResult;
     },
@@ -254,20 +202,17 @@ export default {
       this.keyboardInput = input;
 
       switch (this.currentKeyword) {
-        case "search":
-          this.dns.search = input;
+        case "ip_addr":
+          this.dns.ip_addr = input;
           break;
-        case "pri_dns":
-          this.dns.pri_dns = input;
+        case "netmask":
+          this.dns.netmask = input;
           break;
-        case "alt_dns":
-          this.dns.alt_dns = input;
+        case "network":
+          this.dns.network = input;
           break;
-        case "email_server":
-          this.dns.email_server = input;
-          break;
-        case "from":
-          this.dns.from = input;
+        case "broadcast":
+          this.dns.broadcast = input;
           break;
 
         default:

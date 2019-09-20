@@ -76,18 +76,16 @@ body {
 .overflowscroll {
   overflow-y: scroll!important;
 }
-.invalidemail {
+.invalid {
   display: block;
   margin: 0;
   background-color: red;
-  color: #FFF;
+  color: #fff;
   text-align: center;
-  /* width: 96%;
-  float: left;
-  height: 20px; */
   position: relative;
   bottom: -5px;
 }
+
 .q-pa-md {
   position: relative;
   height: 440px;
@@ -103,7 +101,7 @@ body {
 .error-text {
   line-height: 1;
 }
-.dns .inputbox {
+.custom_inputbox {
   width: 100%;
   resize: none;
   box-shadow: none;
@@ -112,7 +110,10 @@ body {
   border-radius: 15px;
   padding: 1px 0.5em;
   border-color: black;
-  margin-bottom: 0;
+}
+.custom_inputbox:focus{
+  outline: none;
+  background: transparent;
 }
 .socket {
   margin: auto;
@@ -283,4 +284,8 @@ body {
   cursor: pointer;
   position: relative;
   bottom: -5px;
+}
+
+.title {
+  margin-bottom: 30px;
 }

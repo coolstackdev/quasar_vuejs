@@ -159,7 +159,7 @@
                 />
                 <span
                   v-if="invalidEmail == true && hasError == true"
-                  class="invalidemail"
+                  class="invalid"
                   >Invalid Email</span
                 >
                 <!-- <span
