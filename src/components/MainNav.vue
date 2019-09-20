@@ -4,10 +4,10 @@
       <PrevButton />
     </div>
     <div class="col" style="display: flex; justify-content: center;">
-      <MenuButton />
+      <HomeButton />
     </div>
     <div class="col">
-      <NextButton v-bind:path="next" />
+      <NextButton v-if="next !== ''" v-bind:path="next" />
     </div>
   </div>
 </template>
@@ -16,13 +16,13 @@
 
 <script>
 import PrevButton from "../components/PrevButton";
-import MenuButton from "../components/MenuButton";
+import HomeButton from "../components/HomeButton";
 import NextButton from "../components/NextButton";
 export default {
   name: "NavigationBar",
   components: {
     PrevButton,
-    MenuButton,
+    HomeButton,
     NextButton
   },
   props: ["next"]

@@ -89,7 +89,7 @@
               </div>
             </div>
 
-            <NavigationBar v-bind:next="next" />
+            <MainNav v-bind:next="next" />
 
             <!-- keyboard -->
             <div class="keyboard-container">
@@ -120,13 +120,13 @@
 </template>
 <script>
 import SimpleKeyboard from "../components/SimpleKeyboard";
-import NavigationBar from "../components/NavigationBar";
+import MainNav from "../components/MainNav";
 import config from "../../config.js";
 export default {
   name: "DNSSetup",
   components: {
     SimpleKeyboard,
-    NavigationBar
+    MainNav
   },
 
   data() {

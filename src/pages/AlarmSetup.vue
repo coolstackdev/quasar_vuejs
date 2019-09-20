@@ -177,7 +177,7 @@
               </div>
             </div>
 
-            <NavigationBar v-bind:next="next" />
+            <MainNav v-bind:next="next" />
           </div>
         </div>
       </div>
@@ -186,12 +186,12 @@
 </template>
 <script>
 import SimpleKeyboard from "../components/SimpleKeyboard";
-import NavigationBar from "../components/NavigationBar";
+import MainNav from "../components/MainNav";
 export default {
   name: "Alarms",
   components: {
     SimpleKeyboard,
-    NavigationBar
+    MainNav
   },
 
   data() {
