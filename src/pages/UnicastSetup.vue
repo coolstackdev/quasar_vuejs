@@ -7,7 +7,7 @@
             <div class="row screen-row">
               <div class="col-12 title">
                 <p class="fontsize-18 text-center">
-                  {{ $t("NET_SETTINGS_STR") }}
+                  {{ $t("UDP_SETUP_STR") }}
                 </p>
               </div>
             </div>
@@ -21,7 +21,7 @@
                 <input
                   type="text"
                   class="custom_inputbox fontsize-14"
-                  v-model="setting.ip_addr"
+                  v-model="unicast.ip_addr"
                   @focus="showKeyboard('ip_addr')"
                   @keyup.esc="closeKeyboards()"
                 />
@@ -31,14 +31,14 @@
             <div class="row content-row">
               <div class="col-2"></div>
               <div class="col-3">
-                <p class="fontsize-14">{{ $t("NETMASK_STR") }}</p>
+                <p class="fontsize-14">{{ $t("PORT_STR") }}</p>
               </div>
               <div class="col-7">
                 <input
-                  type="text"
+                  type="number"
                   class="custom_inputbox fontsize-14"
-                  v-model="setting.netmask"
-                  @focus="showKeyboard('netmask')"
+                  v-model="unicast.port"
+                  @focus="showKeyboard('port')"
                   @keyup.esc="closeKeyboards()"
                 />
               </div>
@@ -47,31 +47,15 @@
             <div class="row content-row">
               <div class="col-2"></div>
               <div class="col-3">
-                <p class="fontsize-14">{{ $t("NET_NETWORK_STR") }}</p>
+                <p class="fontsize-14">{{ $t("UDPENCODER_STR") }}</p>
               </div>
-              <div class="col-7">
+              <div class="col-7 fontsize-14">
                 <input
                   type="text"
                   class="custom_inputbox fontsize-14"
-                  v-model="setting.network"
-                  @focus="showKeyboard('network')"
-                  @keyup.esc="closeKeyboards()"
-                />
-              </div>
-            </div>
-
-            <div class="row content-row">
-              <div class="col-2"></div>
-              <div class="col-3">
-                <p class="fontsize-14">{{ $t("BROADCAST_STR") }}</p>
-              </div>
-              <div class="col-7">
-                <input
-                  type="text"
-                  class="custom_inputbox fontsize-14"
-                  v-model="setting.broadcast"
-                  @focus="showKeyboard('broadcast')"
-                  @keyup.esc="closeKeyboards()"
+                  readonly
+                  v-model="unicast.encoder"
+                  @click="toggleEncoder()"
                 />
               </div>
             </div>
@@ -118,7 +102,7 @@ export default {
 
   data() {
     return {
-      next: "/home2",
+      next: "",
       errorMsg: "Invalid IP address",
       hasError: false,
       isShowKeyboard: false,
@@ -126,29 +110,26 @@ export default {
       currentKeyword: "",
       input: "",
 
-      setting: {
+      unicast: {
         ip_addr: "192.168.0.23",
-        netmask: "255.255.254.0",
-        network: "192.168.0.0",
-        broadcast: "192.168.1.255"
+        port: "1111",
+        encoder: "Off"
       }
     };
   },
   methods: {
+    toggleEncoder() {
+      if (this.unicast.encoder == "Off") this.unicast.encoder = "On";
+      else this.unicast.encoder = "Off";
+    },
     // show & hide keyboard
     showKeyboard(keyword) {
       switch (keyword) {
         case "ip_addr":
-          this.keyboardInput = this.setting.ip_addr;
+          this.keyboardInput = this.unicast.ip_addr;
           break;
-        case "netmask":
-          this.keyboardInput = this.setting.netmask;
-          break;
-        case "network":
-          this.keyboardInput = this.setting.network;
-          break;
-        case "broadcast":
-          this.keyboardInput = this.setting.broadcast;
+        case "port":
+          this.keyboardInput = this.unicast.port;
           break;
 
         default:
@@ -167,11 +148,29 @@ export default {
 
     // validation methods
     checkValidation() {
-      let validationResult = this.keyboardInput.match(
-        config.regexString.ipAddress
-      )
-        ? true
-        : false;
+      let validationResult = false;
+
+      switch (this.currentKeyword) {
+        case "ip_addr":
+          validationResult = this.keyboardInput.match(
+            config.regexString.ipAddress
+          )
+            ? true
+            : false;
+          this.errorMsg = "Invalid IP address";
+          break;
+        case "port":
+          validationResult = this.keyboardInput.match(
+            config.regexString.numbers
+          )
+            ? true
+            : false;
+          this.errorMsg = "Invalid Port";
+          break;
+
+        default:
+          break;
+      }
 
       return validationResult;
     },
@@ -182,16 +181,10 @@ export default {
 
       switch (this.currentKeyword) {
         case "ip_addr":
-          this.setting.ip_addr = input;
+          this.unicast.ip_addr = input;
           break;
-        case "netmask":
-          this.setting.netmask = input;
-          break;
-        case "network":
-          this.setting.network = input;
-          break;
-        case "broadcast":
-          this.setting.broadcast = input;
+        case "port":
+          this.unicast.port = input;
           break;
 
         default:

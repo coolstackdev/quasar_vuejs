@@ -114,7 +114,13 @@ body {
 .custom_inputbox:focus{
   outline: none;
   background: transparent;
+  border-color: black;
 }
+
+input[readonly] {
+  background: transparent;
+}
+
 .socket {
   margin: auto;
 }

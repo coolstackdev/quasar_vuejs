@@ -61,6 +61,10 @@ const routes = [
       {
         path: "networksetting",
         component: () => import("pages/NetworkSetting.vue")
+      },
+      {
+        path: "unicastsetup",
+        component: () => import("pages/UnicastSetup.vue")
       }
     ]
   }

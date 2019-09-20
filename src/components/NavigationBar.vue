@@ -7,7 +7,7 @@
       <MenuButton />
     </div>
     <div class="col">
-      <NextButton v-bind:path="next" />
+      <NextButton v-if="next !== ''" v-bind:path="next" />
     </div>
   </div>
 </template>

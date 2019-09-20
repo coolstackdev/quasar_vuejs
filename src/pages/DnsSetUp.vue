@@ -89,32 +89,7 @@
               </div>
             </div>
 
-            <div class="row container-left-right nav-bar">
-              <div class="col">
-                <button @click="$router.go(-1)" class="nav-button">
-                  <i
-                    class="fa fa-chevron-left margin-right-10"
-                    aria-hidden="true"
-                  ></i>
-                  {{ $t("PREV_STR") }}
-                </button>
-              </div>
-              <div class="col" style="display: flex; justify-content: center;">
-                <button @click="$router.push('/')" class="nav-button">
-                  <i class="fa fa-home margin-right-10" aria-hidden="true"></i>
-                  {{ $t("W_HOME_STR") }}
-                </button>
-              </div>
-              <div class="col">
-                <button class="nav-button" style="float: right">
-                  {{ $t("NEXT_STR") }}
-                  <i
-                    class="fa fa-chevron-right margin-left-10"
-                    aria-hidden="true"
-                  ></i>
-                </button>
-              </div>
-            </div>
+            <NavigationBar v-bind:next="next" />
 
             <!-- keyboard -->
             <div class="keyboard-container">
@@ -145,14 +120,18 @@
 </template>
 <script>
 import SimpleKeyboard from "../components/SimpleKeyboard";
+import NavigationBar from "../components/NavigationBar";
+import config from "../../config.js";
 export default {
   name: "DNSSetup",
   components: {
-    SimpleKeyboard
+    SimpleKeyboard,
+    NavigationBar
   },
 
   data() {
     return {
+      next: "/home3",
       errorMsg: "",
       hasError: false,
       isShowKeyboard: false,
@@ -206,37 +185,42 @@ export default {
     // validation methods
     checkValidation() {
       let validationResult = false;
-      let emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{1,24}))$/;
-      let ipAddressRegex = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/g;
-      let requiredRegex = /[a-zA-Z0-9-,]+/g;
 
       switch (this.currentKeyword) {
         case "search":
-          validationResult = this.keyboardInput.match(requiredRegex)
+          validationResult = this.keyboardInput.match(
+            config.regexString.required
+          )
             ? true
             : false;
           this.errorMsg = "This is a required field";
           break;
         case "pri_dns":
-          validationResult = this.keyboardInput.match(ipAddressRegex)
+          validationResult = this.keyboardInput.match(
+            config.regexString.ipAddress
+          )
             ? true
             : false;
           this.errorMsg = "Invalid IP address";
           break;
         case "alt_dns":
-          validationResult = this.keyboardInput.match(ipAddressRegex)
+          validationResult = this.keyboardInput.match(
+            config.regexString.ipAddress
+          )
             ? true
             : false;
           this.errorMsg = "Invalid IP address";
           break;
         case "email_server":
-          validationResult = this.keyboardInput.match(requiredRegex)
+          validationResult = this.keyboardInput.match(
+            config.regexString.required
+          )
             ? true
             : false;
           this.errorMsg = "This is a required field";
           break;
         case "from":
-          validationResult = this.keyboardInput.match(emailRegex)
+          validationResult = this.keyboardInput.match(config.regexString.email)
             ? true
             : false;
           this.errorMsg = "Invalid Email";
