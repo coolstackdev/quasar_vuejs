@@ -12,6 +12,7 @@
               </div>
               <div class="col-8 fontsize-18">
                 <button style="float: right; margin-right: 10px">
+                  <i class="fa fa-repeat" aria-hidden="true" style="margin-right: 12px"></i>
                   {{ $t("AL_RESET_STR") }}
                 </button>
               </div>
@@ -25,6 +26,7 @@
               </div>
               <div class="col-7">
                 <button style="float: right; margin-right: 10px">
+                  <i class="fa fa-file-text-o" aria-hidden="true" style="margin-right: 12px"></i>
                   {{ $t("VIEW_LOG_STR") }}
                 </button>
               </div>

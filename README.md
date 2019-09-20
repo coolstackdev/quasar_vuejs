@@ -22,5 +22,12 @@ yarn run lint
 quasar build
 ```
 
+
+### Serve app
+```bash
+cd <project path>\dist\spa
+quasar serve .
+```
+
 ### Customize the configuration
 See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).

@@ -43,7 +43,7 @@ const routes = [
         component: () => import("pages/CalibrationDataEditor.vue")
       },
       {
-        path: "clibrationentry",
+        path: "calibrationentry",
         component: () => import("pages/CalibrationDataEntry.vue")
       },
       {
@@ -55,8 +55,8 @@ const routes = [
         component: () => import("pages/EncoderSetup.vue")
       },
       {
-        path: "calibrationwarning",
-        component: () => import("pages/HeadCalibrationWarning.vue")
+        path: "sensorsetup",
+        component: () => import("pages/SensorSetup.vue")
       }
     ]
   }

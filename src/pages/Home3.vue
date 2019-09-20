@@ -5,9 +5,7 @@
         <div class="q-pa-md full">
           <div class="row">
             <div class="col">
-              <button class="fontsize-10">
-                {{ $t("ALARM_STR") }}
-              </button>
+              <AlarmButton />
             </div>
             <div class="col">
               <p class="fontsize-12 min-line">{{ $t("FIRST_STR") }}</p>
@@ -18,10 +16,9 @@
               <p class="fontsize-12 min-line">{{ $t("RPT_STD_STR") }}</p>
             </div>
             <div class="col">
-              <button
-                class="fontsize-10"
-                style="float: right; margin-right: 10px"
-              >
+              <button class="fontsize-10"
+                      style="float: right; margin-right: 10px">
+                <i class="fa fa-eraser" aria-hidden="true"></i>
                 {{ $t("W_BTN_CLEAR_STR") }}
               </button>
             </div>
@@ -33,32 +30,7 @@
             </div>
           </div>
 
-          <div class="row">
-            <div class="col">
-              <button class="nav-button">
-                <i
-                  class="fa fa-chevron-left margin-right-10"
-                  aria-hidden="true"
-                ></i>
-                {{ $t("PREV_STR") }}
-              </button>
-            </div>
-            <div class="col" style="display: flex; justify-content: center;">
-              <button class="nav-button" @click="mainmenu">
-                <i class="fa fa-bars margin-right-10" aria-hidden="true"></i>
-                {{ $t("MENU_STR") }}
-              </button>
-            </div>
-            <div class="col">
-              <button class="nav-button" style="float: right">
-                {{ $t("NEXT_STR") }}
-                <i
-                  class="fa fa-chevron-right margin-left-10"
-                  aria-hidden="true"
-                ></i>
-              </button>
-            </div>
-          </div>
+          <NavigationBar v-bind:next="next" />
         </div>
       </div>
     </div>
@@ -66,15 +38,16 @@
 </template>
 
 <script>
-import ApexCharts from "apexcharts";
-
+  import ApexCharts from "apexcharts";
+  import AlarmButton from "../components/AlarmButton";
+  import NavigationBar from "../components/NavigationBar";
 export default {
   name: "Home3",
-  methods: {
-    mainmenu() {
-      this.$router.push({ path: "/main" });
-    }
-  },
+  components: {
+      AlarmButton,
+      NavigationBar,
+    },
+  methods: {},
   mounted() {
     var i;
 
@@ -94,6 +67,7 @@ export default {
   },
   data() {
     return {
+      next: "/report",
       options: {
         chart: {
           id: "vuechart-example",
